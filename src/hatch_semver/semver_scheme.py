@@ -27,7 +27,7 @@ class SemverScheme(VersionSchemeInterface):
                 original = next_version
             elif part in ("post", "rev", "r"):
                 raise ValeError(f"Semver has no concept of a post-release. Use 'build' instead")
-            elif version == "dev":
+            elif part == "dev":
                 raise ValeError(f"Semver has no concept of a dev-release. Use 'build' instead")
             else:
                 if len(parts) > 1:
