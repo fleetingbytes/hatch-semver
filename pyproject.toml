@@ -52,7 +52,7 @@ Homepage = "https://github.com/Nagidal/hatch-semver"
 Issues = "https://github.com/Nagidal/hatch-semver/issues"
 
 [project.entry-points.hatch]
-semver = "hatch_semver.hooks"
+semver = "hatch_semver.plugin.hooks"
 
 [project.scripts]
 
