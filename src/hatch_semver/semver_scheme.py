@@ -20,10 +20,8 @@ class SemverScheme(VersionSchemeInterface):
         parts = desired_version.replace("micro", "patch").replace("fix", "patch").split(",")
 
         for part in parts:
-            next_version = getattr(original, "bump_" + part)()
-            original = next_version
-            if part == "minor":
-                next_version = original.bump_minor()
+            if part in ("major", "minor", "patch"):
+                next_version = getattr(original, "bump_" + part)()
                 original = next_version
             elif part in ("post", "rev", "r"):
                 raise ValeError(f"Semver has no concept of a post-release. Use 'build' instead")
