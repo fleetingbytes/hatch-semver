@@ -2,6 +2,19 @@
 
 <!-- towncrier release notes start -->
 
+## [0.0.4](https://github.com/Nagidal/hatch-semver/tree/0.0.4) - 2022-11-10
+
+
+### Development Details
+
+- Plugin structure is ready, should know how to bump major, minor, patch [#2](https://github.com/Nagidal/hatch-semver/issues/2)
+
+
+### Documentation
+
+- Better readme, but not final [#8](https://github.com/Nagidal/hatch-semver/issues/8)
+
+
 ## [0.0.3](https://github.com/Nagidal/hatch-semver/tree/0.0.3) - 2022-11-10
 
 
