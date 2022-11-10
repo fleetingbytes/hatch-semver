@@ -1,0 +1,149 @@
+[build-system]
+requires = [
+    "hatchling>=1.8.0",
+]
+build-backend = "hatchling.build"
+
+[project]
+name = "hatch-semver"
+description = "Hatch plugin for semver versioning scheme"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.9"
+authors = [
+    { name = "Sven Siegmund", email = "sven.siegmund@iav.de" },
+]
+
+keywords = [
+    "hatch",
+    "plugin",
+    "version",
+    "development",
+    "versioning",
+]
+
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    #"Development Status :: 4 - Beta",
+    #"Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Topic :: Software Development",
+    "Framework :: Hatch",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: English",
+    "Programming Language :: Python :: 3.9",
+    "Operating System :: OS Independent",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: POSIX :: Linux",
+    "Operating System :: MacOS :: MacOS X",
+]
+
+dependencies = [
+    "hatchling",
+    "semver",
+]
+
+dynamic = [
+    "version",
+]
+
+[project.urls]
+Homepage = "https://github.com/Nagidal/hatch-semver"
+Issues = "https://github.com/Nagidal/hatch-semver/issues"
+
+[project.entry-points.hatch]
+semver = "hatch_semver.hooks"
+
+[project.scripts]
+
+[tool.hatch.version]
+path = "src/hatch-semver/__about__.py"
+
+[tool.hatch.envs.default]
+dependencies = [
+    "pytest",
+    "pytest-cov",
+    "wheel",
+    "towncrier",
+]
+
+[tool.hatch.envs.default.scripts]
+cov = "pytest -v --cov-report=term-missing --cov-config=pyproject.toml --cov=src/hatch-semver --cov=tests"
+no-cov = "cov --no-cov"
+
+[tool.hatch.envs.style]
+dependencies = [
+    "black",
+    "isort",
+]
+
+[tool.hatch.envs.style.scripts]
+fmt = [
+    "isort .",
+    "black .",
+]
+
+[tool.hatch.envs.docs]
+dependencies = [
+    "pdoc3"
+]
+
+[tool.hatch.envs.docs.scripts]
+build = "pdoc --html --output-dir docs hatch-semver"
+serve = "pdoc --http : hatch-semver"
+
+[[tool.hatch.envs.test.matrix]]
+python = ["39", "310"]
+
+[tool.coverage.run]
+branch = true
+parallel = true
+omit = [
+  #"src/hatch-semver/__about__.py",
+]
+
+[tool.coverage.report]
+exclude_lines = [
+  "no cov",
+  "if __name__ == .__main__.:",
+  "if TYPE_CHECKING:",
+]
+
+[tool.black]
+    line-length = 102
+
+[tool.isort]
+    line-length = 102
+
+[tool.towncrier]
+name = "hatch-semver"
+package = "hatch-semver"
+package_dir = "src"
+directory = "changelog.d"
+filename = "CHANGELOG.md"
+start_string = "<!-- towncrier release notes start -->\n"
+underlines = ["", "", ""]
+template = "changelog.d/changelog_template.jinja"
+title_format = "## [{version}](https://github.com/Nagidal/hatch-semver/tree/{version}) - {project_date}"
+issue_format = "[#{issue}](https://github.com/Nagidal/hatch-semver/issues/{issue})"
+orphan_prefix = "+"
+
+[tool.towncrier.fragment.doc]
+name = "Documentation"
+showcontent = true
+
+[tool.towncrier.fragment.feature]
+name = "New Features"
+showcontent = true
+
+[tool.towncrier.fragment.improved]
+name = "Improvements"
+showcontent = true
+
+[tool.towncrier.fragment.fixed]
+name = "Bugfixes"
+showcontent = true
+
+[tool.towncrier.fragment.detail]
+name = "Development Details"
+showcontent = true
