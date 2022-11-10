@@ -16,7 +16,7 @@ class SemverScheme(VersionSchemeInterface):
     def update(self, desired_version, original_version, version_data) -> str:
         from semver import VersionInfo
 
-        original = VersionInfo(original_version)
+        original = VersionInfo.parse(original_version)
         parts = desired_version.replace("micro", "patch").replace("fix", "patch").split(",")
 
         for part in parts:
