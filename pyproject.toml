@@ -57,7 +57,7 @@ semver = "hatch_semver.plugin.hooks"
 [project.scripts]
 
 [tool.hatch.version]
-path = "src/hatch-semver/__about__.py"
+path = "src/hatch_semver/__about__.py"
 
 [tool.hatch.envs.default]
 dependencies = [
@@ -68,7 +68,7 @@ dependencies = [
 ]
 
 [tool.hatch.envs.default.scripts]
-cov = "pytest -v --cov-report=term-missing --cov-config=pyproject.toml --cov=src/hatch-semver --cov=tests"
+cov = "pytest -v --cov-report=term-missing --cov-config=pyproject.toml --cov=src/hatch_semver --cov=tests"
 no-cov = "cov --no-cov"
 
 [tool.hatch.envs.style]
@@ -99,7 +99,7 @@ python = ["39", "310"]
 branch = true
 parallel = true
 omit = [
-  #"src/hatch-semver/__about__.py",
+  #"src/hatch_semver/__about__.py",
 ]
 
 [tool.coverage.report]
@@ -116,8 +116,8 @@ exclude_lines = [
     line-length = 102
 
 [tool.towncrier]
-name = "hatch-semver"
-package = "hatch-semver"
+name = "hatch_semver"
+package = "hatch_semver"
 package_dir = "src"
 directory = "changelog.d"
 filename = "CHANGELOG.md"
