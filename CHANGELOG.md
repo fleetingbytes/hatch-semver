@@ -2,6 +2,14 @@
 
 <!-- towncrier release notes start -->
 
+## [0.0.8](https://github.com/Nagidal/hatch-semver/tree/0.0.8) - 2022-11-10
+
+
+### Bugfixes
+
+- Fixed another ValueError when bumping major version [#14](https://github.com/Nagidal/hatch-semver/issues/14)
+
+
 ## [0.0.7](https://github.com/Nagidal/hatch-semver/tree/0.0.7) - 2022-11-10
 
 
