@@ -116,7 +116,7 @@ exclude_lines = [
     line-length = 102
 
 [tool.towncrier]
-name = "hatch_semver"
+name = "hatch-semver"
 package = "hatch_semver"
 package_dir = "src"
 directory = "changelog.d"
