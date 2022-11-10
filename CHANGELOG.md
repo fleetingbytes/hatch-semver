@@ -2,6 +2,19 @@
 
 <!-- towncrier release notes start -->
 
+## [0.0.6](https://github.com/Nagidal/hatch-semver/tree/0.0.6) - 2022-11-10
+
+
+### Bugfixes
+
+- Major version should be bumpable now [#10](https://github.com/Nagidal/hatch-semver/issues/10)
+
+
+## [0.0.5](https://github.com/Nagidal/hatch-semver/tree/0.0.5) - 2022-11-10
+
+No significant changes.
+
+
 ## [0.0.4](https://github.com/Nagidal/hatch-semver/tree/0.0.4) - 2022-11-10
 
 
