@@ -3,6 +3,14 @@
 from hatchling.version.scheme.plugin.interface import VersionSchemeInterface
 
 
+commands = dict((
+        ("major", "major"),
+        ("minor", "minor"),
+        ("micro", "patch"),
+        ("fix", "patch"),
+        ))
+
+
 class SemverScheme(VersionSchemeInterface):
     """
     Implements the semver versioning scheme for hatch
@@ -20,8 +28,11 @@ class SemverScheme(VersionSchemeInterface):
         parts = desired_version.replace("micro", "patch").replace("fix", "patch").split(",")
 
         for part in parts:
-            if part in ("major", "minor", "patch"):
+            if commands.get(part):
                 next_version = getattr(original, "bump_" + part)()
+                original = next_version
+            elif part == "release":
+                next_version = original.finalize_version()
                 original = next_version
             elif part in ("post", "rev", "r"):
                 raise ValeError(f"Semver has no concept of a post-release. Use 'build' instead")

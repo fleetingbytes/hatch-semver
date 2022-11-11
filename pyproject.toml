@@ -67,6 +67,13 @@ dependencies = [
     "towncrier",
 ]
 
+[tool.hatch.envs.test]
+dependencies = [
+    "pytest",
+    "pytest-cov",
+    "hatch"
+]
+
 [tool.hatch.envs.default.scripts]
 cov = "pytest -v --cov-report=term-missing --cov-config=pyproject.toml --cov=src/hatch_semver --cov=tests"
 no-cov = "cov --no-cov"
@@ -93,7 +100,7 @@ build = "pdoc --html --output-dir docs hatch-semver"
 serve = "pdoc --http : hatch-semver"
 
 [[tool.hatch.envs.test.matrix]]
-python = ["39", "310"]
+python = ["310"]
 
 [tool.coverage.run]
 branch = true
