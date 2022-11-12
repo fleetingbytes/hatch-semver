@@ -7,6 +7,11 @@ from hatch.config.constants import AppEnvVars, ConfigEnvVars, PublishEnvVars
 from hatch.utils.fs import Path, temp_directory
 
 
+collect_ignore = [
+        "test_semver_scheme.py",
+        # "test_bump_instruction.py",
+]
+
 @pytest.fixture(scope='session', autouse=True)
 def isolation() -> Generator[Path, None, None]:
     with temp_directory() as d:

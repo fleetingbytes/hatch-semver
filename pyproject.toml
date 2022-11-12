@@ -11,7 +11,7 @@ readme = "README.md"
 license = "MIT"
 requires-python = ">=3.9"
 authors = [
-    { name = "Sven Siegmund", email = "sven.siegmund@iav.de" },
+    { name = "Sven Siegmund", email = "sven.siegmund@gmail.com" },
 ]
 
 keywords = [
@@ -40,7 +40,7 @@ classifiers = [
 
 dependencies = [
     "hatchling",
-    "semver",
+    "semver ~= 2.13.0",
 ]
 
 dynamic = [
@@ -75,7 +75,7 @@ dependencies = [
 ]
 
 [tool.hatch.envs.default.scripts]
-cov = "pytest -v --cov-report=term-missing --cov-config=pyproject.toml --cov=src/hatch_semver --cov=tests"
+cov = "pytest -vx --cov-report=term-missing --cov-config=pyproject.toml --cov=src/hatch_semver --cov=tests"
 no-cov = "cov --no-cov"
 
 [tool.hatch.envs.style]

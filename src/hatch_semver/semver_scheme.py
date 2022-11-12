@@ -1,14 +1,7 @@
 #!/usr/bin/env python
 
 from hatchling.version.scheme.plugin.interface import VersionSchemeInterface
-
-
-commands = dict((
-        ("major", "major"),
-        ("minor", "minor"),
-        ("micro", "patch"),
-        ("fix", "patch"),
-        ))
+from typing import Mapping
 
 
 class SemverScheme(VersionSchemeInterface):
@@ -21,35 +14,31 @@ class SemverScheme(VersionSchemeInterface):
 
     PLUGIN_NAME = "semver"
 
-    def update(self, desired_version, original_version, version_data) -> str:
+    def update(self, desired_version: str, original_version: str, version_data: Mapping) -> str:
+        if not desired_version:
+            return original_version
         from semver import VersionInfo
+        from copy import deepcopy
+        from .bump_instruction import BumpInstruction
 
-        original = VersionInfo.parse(original_version)
-        parts = desired_version.replace("micro", "patch").replace("fix", "patch").split(",")
-
-        for part in parts:
-            if commands.get(part):
-                next_version = getattr(original, "bump_" + part)()
-                original = next_version
-            elif part == "release":
-                next_version = original.finalize_version()
-                original = next_version
-            elif part in ("post", "rev", "r"):
-                raise ValeError(f"Semver has no concept of a post-release. Use 'build' instead")
-            elif part == "dev":
-                raise ValeError(f"Semver has no concept of a dev-release. Use 'build' instead")
+        original_version = VersionInfo.parse(original_version)
+        current_version = deepcopy(original_version)
+        instructions: str = desired_version
+        for instruction in instructions.split(","):
+            bi = BumpInstruction(instruction)
+            if bi.version_part == "build":
+                current_version = current_version.bump_build(token=bi.token)
+            elif bi.version_part == "release":
+                current_version = current_version.finalize_version()
+            elif bi.is_specific:
+                current_version = VersionInfo.parse(bi.version_part)
             else:
-                if len(parts) > 1:
-                    raise ValueError(
-                        "Cannot specify multiple update operations with an explicit version"
-                    )
-
-                next_version = VersionInfo.parse(part)
-                if self.config.get("validate-bump", True) and next_version <= original:
-                    raise ValueError(
-                        f"Version `{part}` is not higher than the original version `{original_version}`"
-                    )
-                else:
-                    return str(next_version)
-
-        return str(original)
+                current_version = current_version.next_version(
+                    bi.version_part, prerelease_token=bi.token
+                )
+        if self.config.get("validate-bump", True) and current_version <= original_version:
+            raise ValueError(
+                f"Version `{current_version}` is not higher than the original version `{original_version}`"
+            )
+        else:
+            return str(current_version)
