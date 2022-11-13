@@ -1,10 +1,12 @@
 #!/usr/bin/env python
 
-from hatchling.version.scheme.plugin.interface import VersionSchemeInterface
-from typing import Mapping
-from semver import VersionInfo
-from operator import ge, gt
 from copy import deepcopy
+from operator import ge, gt
+from typing import Mapping
+
+from hatchling.version.scheme.plugin.interface import VersionSchemeInterface
+from semver import VersionInfo
+
 from .bump_instruction import BumpInstruction
 
 

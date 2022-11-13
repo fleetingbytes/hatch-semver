@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
-from dataclasses import dataclass, field, InitVar
-from typing import Optional, ClassVar
+from dataclasses import InitVar, dataclass, field
+from typing import ClassVar, Optional
 
 
 @dataclass

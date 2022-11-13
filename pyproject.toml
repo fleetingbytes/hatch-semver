@@ -92,7 +92,7 @@ fmt = [
 
 [tool.hatch.envs.docs]
 dependencies = [
-    "pdoc3"
+    "portray"
 ]
 
 [tool.hatch.envs.docs.scripts]
@@ -117,9 +117,6 @@ exclude_lines = [
 ]
 
 [tool.black]
-    line-length = 102
-
-[tool.isort]
     line-length = 102
 
 [tool.towncrier]

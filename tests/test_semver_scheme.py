@@ -1,14 +1,16 @@
 #!/usr/bin/env python
 
 
-import pytest
-from pytest import raises
-from hatch_semver.semver_scheme import SemverScheme
-from hatch.utils.fs import Path
-from typing import Optional, Generator, Mapping, Union
-from hatch_semver.bump_instruction import BumpInstruction as BI
 from contextlib import nullcontext as no_error
+from typing import Generator, Mapping, Optional, Union
+
+import pytest
 from _pytest.python_api import RaisesContext
+from hatch.utils.fs import Path
+from pytest import raises
+
+from hatch_semver.bump_instruction import BumpInstruction as BI
+from hatch_semver.semver_scheme import SemverScheme
 
 # define some shorthand variables for writing the test parameters
 sep = SemverScheme.INSTRUCTION_SEPARATOR.join
@@ -22,6 +24,7 @@ not_higher = raises(ValueError, match="not higher")
 not_as_high = raises(ValueError, match="at least as high")
 directly = raises(ValueError, match="directly")
 specifically = raises(ValueError, match="specifically")
+
 
 @pytest.mark.parametrize(
     "instructions, original, expected, settings, exp_error",
@@ -89,8 +92,8 @@ specifically = raises(ValueError, match="specifically")
         ("beta", "1.0.0+dev", "1.0.1-beta.1", {}, ok),
         (bsep(("pre", "gamma")), "1.0.0+dev", "1.0.1-gamma.1", {}, ok),
         # dev
-        ("dev", "3.4.5","3.4.5+dev.1", {}, ok),
-        (bsep(("build", "dev")), "3.4.5","3.4.5+dev.1", {}, ok),
+        ("dev", "3.4.5", "3.4.5+dev.1", {}, ok),
+        (bsep(("build", "dev")), "3.4.5", "3.4.5+dev.1", {}, ok),
     ),
 )
 def test_semver_scheme(
