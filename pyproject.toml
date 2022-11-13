@@ -151,6 +151,6 @@ showcontent = true
 name = "Bugfixes"
 showcontent = true
 
-[tool.towncrier.fragment.detail]
+[tool.towncrier.fragment.unimportant]
 name = "Development Details"
 showcontent = true
