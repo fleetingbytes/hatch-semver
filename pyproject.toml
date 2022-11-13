@@ -71,7 +71,7 @@ dependencies = [
 dependencies = [
     "pytest",
     "pytest-cov",
-    "hatch"
+    "hatch",
 ]
 
 [tool.hatch.envs.default.scripts]

@@ -39,7 +39,12 @@ class BumpInstruction:
         elif part in ("alpha", "beta"):
             if token:
                 raise ValueError(
-                    f"{part} version cannot be set to {token} directly. Use 'prerelease={part}' instead"
+                    " ".join(
+                        (
+                            f"{part} version cannot be set to {token} directly.",
+                            f"Use 'prerelease={part}' instead",
+                        )
+                    )
                 )
             token = part
             part = "prerelease"
@@ -52,7 +57,9 @@ class BumpInstruction:
             part = "build"
         if token:
             if part in ("major", "minor", "patch", "release"):
-                raise ValueError(f"{part} version cannot be set to {token} specifically. Use {part} alone")
+                raise ValueError(
+                    f"{part} version cannot be set to {token} specifically. Use {part} alone"
+                )
         if part in cls.acceptable_version_parts:
             specific = False
         else:

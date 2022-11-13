@@ -8,7 +8,7 @@ from hatch.utils.fs import Path, temp_directory
 
 
 collect_ignore = [
-        "test_semver_scheme.py",
+        # "test_semver_scheme.py",
         # "test_bump_instruction.py",
 ]
 

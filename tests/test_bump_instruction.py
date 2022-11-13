@@ -21,7 +21,7 @@ class TestInvalidToken:
             ValueError,
             match=f"{part} version cannot be set to {token} directly. Use 'build={part}' instead",
         ):
-            BI(f"{part}={token}")
+            BI(BI.sep.join((part, token)))
 
     @pytest.mark.parametrize(
         "part, norm_part, token",
@@ -39,7 +39,7 @@ class TestInvalidToken:
             ValueError,
             match=f"{norm_part} version cannot be set to {token} specifically. Use {norm_part} alone",
         ):
-            BI(f"{part}={token}")
+            BI(BI.sep.join((part, token)))
 
 
 class TestSeparatorNotInInstruction:
@@ -77,8 +77,38 @@ class TestSeparatorNotInInstruction:
 
 
 class TestSeparator:
-    @pytest.mark.parametrize("instruction", ("pre=neat"))
+    @pytest.mark.parametrize(
+        "instruction",
+        (
+            BI.sep.join(("pre", "neat")),
+            BI.sep.join(("build", "impossible", "token")),
+            BI.sep.join(("pre-release", "even", "more", "insane", "token")),
+        ),
+    )
     def test_maxsplit(self, instruction: str) -> None:
-        breakpoint()
         bi = BI(instruction)
         assert bi.token.count(BI.sep) == instruction.count(BI.sep) - 1
+        assert not bi.is_specific
+
+    @pytest.mark.parametrize(
+        "part, norm_part, token, specific",
+        (
+            ("", "", "", True),
+            ("pre", "prerelease", "mypre", False),
+            ("prerelease", "prerelease", "some", False),
+            ("pre-release", "prerelease", "the=hyphen-is=good", False),
+            ("rc", "prerelease", "not;catching*invalid%tokens", False),
+            ("build", "build", "1234", False),
+            ("build", "build", "dev", False),
+            ("build", "build", "devdrop", False),
+        ),
+    )
+    def test_preserve_raw_part_and_raw_token(
+        self, part: str, norm_part: str, token: str, specific: bool
+    ) -> None:
+        bi = BI(BI.sep.join((part, token)))
+        assert bi.version_part is not None
+        assert bi.token is not None
+        assert bi.version_part == norm_part
+        assert bi.token == token
+        assert bi.is_specific == specific
