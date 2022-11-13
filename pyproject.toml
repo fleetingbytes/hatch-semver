@@ -11,7 +11,7 @@ readme = "README.md"
 license = "MIT"
 requires-python = ">=3.9"
 authors = [
-    { name = "Sven Siegmund", email = "sven.siegmund@iav.de" },
+    { name = "Sven Siegmund", email = "sven.siegmund@gmail.com" },
 ]
 
 keywords = [
@@ -40,7 +40,7 @@ classifiers = [
 
 dependencies = [
     "hatchling",
-    "semver",
+    "semver ~= 2.13.0",
 ]
 
 dynamic = [
@@ -67,8 +67,15 @@ dependencies = [
     "towncrier",
 ]
 
+[tool.hatch.envs.test]
+dependencies = [
+    "pytest",
+    "pytest-cov",
+    "hatch",
+]
+
 [tool.hatch.envs.default.scripts]
-cov = "pytest -v --cov-report=term-missing --cov-config=pyproject.toml --cov=src/hatch_semver --cov=tests"
+cov = "pytest -vx --cov-report=term-missing --cov-config=pyproject.toml --cov=src/hatch_semver --cov=tests"
 no-cov = "cov --no-cov"
 
 [tool.hatch.envs.style]
@@ -93,7 +100,7 @@ build = "pdoc --html --output-dir docs hatch-semver"
 serve = "pdoc --http : hatch-semver"
 
 [[tool.hatch.envs.test.matrix]]
-python = ["39", "310"]
+python = ["310"]
 
 [tool.coverage.run]
 branch = true
@@ -144,6 +151,6 @@ showcontent = true
 name = "Bugfixes"
 showcontent = true
 
-[tool.towncrier.fragment.detail]
+[tool.towncrier.fragment.unimportant]
 name = "Development Details"
 showcontent = true
