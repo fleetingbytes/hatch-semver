@@ -2,6 +2,27 @@
 
 <!-- towncrier release notes start -->
 
+## [0.1.0](https://github.com/Nagidal/hatch-semver/tree/0.1.0) - 2022-11-13
+
+
+### New Features
+
+- Added inline options for prerelease and build tokens [#23](https://github.com/Nagidal/hatch-semver/issues/23)
+
+
+### Bugfixes
+
+- Fixed undefined ValeError [#16](https://github.com/Nagidal/hatch-semver/issues/16)
+- Can bump prereleases now [#17](https://github.com/Nagidal/hatch-semver/issues/17)
+- Can bump builds now [#18](https://github.com/Nagidal/hatch-semver/issues/18)
+- Can update version to release [#22](https://github.com/Nagidal/hatch-semver/issues/22)
+
+
+### Development Details
+
+- Created tests [#19](https://github.com/Nagidal/hatch-semver/issues/19)
+
+
 ## [0.0.8](https://github.com/Nagidal/hatch-semver/tree/0.0.8) - 2022-11-10
 
 
