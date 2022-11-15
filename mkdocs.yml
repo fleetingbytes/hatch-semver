@@ -1,7 +1,7 @@
 site_name: Hatch Semver
 
 nav:
-  - Home: "README.md"
+  - Home: "home.md"
   - Changelog: "CHANGELOG.md"
   - "User Guide":
     - Commands: "user_guide/1-commands.md"
@@ -12,11 +12,7 @@ docs_dir: "docs"
 site_dir: "user-site"
 
 watch:
-<<<<<<< HEAD
   - "docs"
-=======
-  - "user-docs"
->>>>>>> master
 
 theme:
   name: "material"
