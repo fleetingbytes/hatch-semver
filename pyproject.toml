@@ -1,6 +1,7 @@
 [build-system]
 requires = [
     "hatchling>=1.8.0",
+    "hatch-semver",
 ]
 build-backend = "hatchling.build"
 
@@ -58,6 +59,8 @@ semver = "hatch_semver.plugin.hooks"
 
 [tool.hatch.version]
 path = "src/hatch_semver/__about__.py"
+validate-bump = true
+scheme = "semver"
 
 [tool.hatch.envs.default]
 dependencies = [
@@ -65,6 +68,7 @@ dependencies = [
     "pytest-cov",
     "wheel",
     "towncrier",
+    "twine",
 ]
 
 [tool.hatch.envs.test]
