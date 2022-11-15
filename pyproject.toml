@@ -101,8 +101,8 @@ dependencies = [
 build = "pdoc --html --force --output-dir api-docs hatch_semver"
 serve = "pdoc --http : hatch_semver"
 userve = [
-    "copy /Y README.md user-docs",
-    "copy /Y CHANGELOG.md user-docs",
+    "copy /Y README.md docs",
+    "copy /Y CHANGELOG.md docs",
     "mkdocs serve",
 ]
 
