@@ -93,18 +93,19 @@ fmt = [
 [tool.hatch.envs.docs]
 dependencies = [
     "mkdocs",
-    "pdoc3",
     "mkdocs-material",
+    "pdoc3",
+    "towncrier",
 ]
 
 [tool.hatch.envs.docs.scripts]
 build = "pdoc --html --force --output-dir api-site hatch_semver"
 serve = "pdoc --http : hatch_semver"
 userve = [
-    "copy /Y README.md docs",
     "copy /Y CHANGELOG.md docs",
     "mkdocs serve",
 ]
+tc = "towncrier build --yes"
 
 [[tool.hatch.envs.test.matrix]]
 python = ["310"]

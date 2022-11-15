@@ -21,7 +21,7 @@ set version scheme to `semver`:
 ```toml
 [tool.hatch.version]
 path = "src/<your_project>/__about__.py"
-validate-bump = True
+validate-bump = true
 scheme = "semver"
 ```
 
