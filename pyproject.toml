@@ -98,7 +98,7 @@ dependencies = [
 ]
 
 [tool.hatch.envs.docs.scripts]
-build = "pdoc --html --force --output-dir api-docs hatch_semver"
+build = "pdoc --html --force --output-dir api-site hatch_semver"
 serve = "pdoc --http : hatch_semver"
 userve = [
     "copy /Y README.md docs",
