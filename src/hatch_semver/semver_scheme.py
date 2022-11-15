@@ -17,34 +17,44 @@ from .errors import ValidationError
 class SemverScheme(VersionSchemeInterface):
     """
     Implements the semantic version scheme.
-    See:
+    ### References
     - https://semver.org/
     - https://hatch.pypa.io/latest/plugins/version-scheme/reference/
     """
 
-    #: the name of the plugin which is to be used in pyproject.toml in [tool.hatch.version]
     PLUGIN_NAME = "semver"
+    """
+    The name of the plugin which is to be used in *pyproject.toml* in [`tool.hatch.version`].
+    Value: `semver`
+    """
     INSTRUCTION_SEPARATOR = ","
+    """
+    Separator of bump instructions which the user writes as an argument to `hatch version`.
+    Value: `,` (comma)
+    """
 
     def update(self, desired_version: str, original_version: str, version_data: Mapping) -> str:
         """
-        Takes the desired version (which actually is a series of bump instructions), \
-                the original version, some mysterious version data (which are ignored) \
-                and returns the new version as a valid semver string.
+        Calculates the new version and returns it as a valid semver string.
 
-        If the configuration option `validate-bump` is *True* it calls \
-                self.validate_bump to check if the new version is valid \
+        If the configuration option [`validate-bump`](https://hatch.pypa.io/latest/plugins/version-scheme/standard/#options) is *True* it calls 
+                [self.validate_bump](#hatch_semver.semver_scheme.SemverScheme.validate_bump) 
+                to check if the new version is valid 
                 as a successor of the original version.
 
-        ##### Parameters
-        - *desired_version*: A series of comma-separated commands carrying \
-                instructions how to bump the current version
-        - *original_version*: Project's original version. Must be a valid \
+        ### Parameters
+        - *desired_version*: A series of commands carrying 
+                instructions how to bump the current version.
+                These commands are separated by `SemverScheme.INSTRUCTION_SEPARATOR`.
+                Each such command is in turn parsed and represented as an instance of
+                `hatch_semver.bump_instruction.BumpInstruction`.
+        - *original_version*: Project's original version. Must be a valid 
                 semantic version ([regex checker](https://regex101.com/r/Ly7O1x/3/)).
-        - *version_data*: poorly documented argument. If anyone knows what it \
+        - *version_data*: Poorly documented argument. Ignored entirely.
+                But the plugin's interface requires it. If anyone knows what it 
                 could be used for, please let me know.
 
-        ##### Return
+        ### Return
         Returns the new version as a valid semver string.
         """
         if not desired_version:
@@ -94,13 +104,13 @@ class SemverScheme(VersionSchemeInterface):
         """
         Validates if the current version is a valid successor of the original version.
 
-        ##### Parameters
+        ### Parameters
         - *current_version*: the new version which is about to supersede the original version.
         - *original_version*: the original version which is about to be superseded by the new one.
         - *bumped_build*: information whether a bump of the build identifier was performed \
                 as the last bump step.
 
-        ##### Raises
+        ### Raises
         Raises [ValidationError](../errors/#validationerror) if the *current_version* (new version) is not higher than the *original_version*. \
         In case only a build identifier bump was performed as the last bump, `ValidationError` is \
         raised if the new version is not at least of equal precedence.
