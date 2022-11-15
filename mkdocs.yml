@@ -1,6 +1,7 @@
 site_name: Hatch Semver
 site_url: https://nagidal.github.io/hatch-semver/
 repo_url: https://github.com/Nagidal/hatch-semver
+site_author: Sven Siegmund
 
 nav:
   - Home: "home.md"
