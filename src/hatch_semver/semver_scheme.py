@@ -14,6 +14,7 @@ from semver import VersionInfo
 from .bump_instruction import BumpInstruction
 from .errors import ValidationError
 
+
 class SemverScheme(VersionSchemeInterface):
     """
     Implements the semantic version scheme.
@@ -37,21 +38,21 @@ class SemverScheme(VersionSchemeInterface):
         """
         Calculates the new version and returns it as a valid semver string.
 
-        If the configuration option [`validate-bump`](https://hatch.pypa.io/latest/plugins/version-scheme/standard/#options) is *True* it calls 
-                [self.validate_bump](#hatch_semver.semver_scheme.SemverScheme.validate_bump) 
-                to check if the new version is valid 
+        If the configuration option [`validate-bump`](https://hatch.pypa.io/latest/plugins/version-scheme/standard/#options) is *True* it calls
+                [self.validate_bump](#hatch_semver.semver_scheme.SemverScheme.validate_bump)
+                to check if the new version is valid
                 as a successor of the original version.
 
         ### Parameters
-        - *desired_version*: A series of commands carrying 
+        - *desired_version*: A series of commands carrying
                 instructions how to bump the current version.
                 These commands are separated by `SemverScheme.INSTRUCTION_SEPARATOR`.
                 Each such command is in turn parsed and represented as an instance of
                 `hatch_semver.bump_instruction.BumpInstruction`.
-        - *original_version*: Project's original version. Must be a valid 
+        - *original_version*: Project's original version. Must be a valid
                 semantic version ([regex checker](https://regex101.com/r/Ly7O1x/3/)).
         - *version_data*: Poorly documented argument. Ignored entirely.
-                But the plugin's interface requires it. If anyone knows what it 
+                But the plugin's interface requires it. If anyone knows what it
                 could be used for, please let me know.
 
         ### Return

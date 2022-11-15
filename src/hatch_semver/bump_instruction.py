@@ -80,13 +80,13 @@ class BumpInstruction:
         of atomic values which it returns. The `BumpInstruction.__post_init__`
         then assigns them to the instance's attributes.
 
-        Version parts (version segments) can be referred to by many names. 
-        For instance the *patch* segment can be called *micro* or *fix*, 
+        Version parts (version segments) can be referred to by many names.
+        For instance the *patch* segment can be called *micro* or *fix*,
         the *pre-release* segment *pre*, *rc*, etc.
 
         This method normalizes all aliases to their native name
         (see [acceptable_version_parts](#hatch_semver.bump_instruction.BumpInstruction.acceptable_version_parts).
-        It also handles shortcuts like `alpha` or `dev` which are actually 
+        It also handles shortcuts like `alpha` or `dev` which are actually
         `prerelease=alpha` or `build=dev` in their full syntax, i.e. they
         are to be understood as a version part with a custom identifier.
 
@@ -103,7 +103,7 @@ class BumpInstruction:
         - *part*: normalized to the native names defined in
                 [acceptable_version_parts](#hatch_semver.bump_instruction.BumpInstruction.acceptable_version_parts), or a specific version
         - *token*: whatever the identifier's value should be
-        - *specific*: information whether *part* contains a specific version, 
+        - *specific*: information whether *part* contains a specific version,
                 rather than a version part
         """
         if part in ("pre", "prerelease", "pre-release", "rc"):
