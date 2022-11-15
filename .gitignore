@@ -9,6 +9,10 @@ config.ini
 *.rtf
 Out-Null
 
+# automatically generated files
+user-site/
+api-site/
+
 # Vim files
 *~
 *.swp

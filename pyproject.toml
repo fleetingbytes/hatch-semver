@@ -92,12 +92,19 @@ fmt = [
 
 [tool.hatch.envs.docs]
 dependencies = [
-    "pdoc3"
+    "mkdocs",
+    "pdoc3",
+    "mkdocs-material",
 ]
 
 [tool.hatch.envs.docs.scripts]
-build = "pdoc --html --output-dir docs hatch-semver"
-serve = "pdoc --http : hatch-semver"
+build = "pdoc --html --force --output-dir api-docs hatch_semver"
+serve = "pdoc --http : hatch_semver"
+userve = [
+    "copy /Y README.md user-docs",
+    "copy /Y CHANGELOG.md user-docs",
+    "mkdocs serve",
+]
 
 [[tool.hatch.envs.test.matrix]]
 python = ["310"]
@@ -117,9 +124,6 @@ exclude_lines = [
 ]
 
 [tool.black]
-    line-length = 102
-
-[tool.isort]
     line-length = 102
 
 [tool.towncrier]

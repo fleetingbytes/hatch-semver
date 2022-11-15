@@ -1,0 +1,18 @@
+site_name: Hatch Semver
+
+nav:
+  - Home: "README.md"
+  - Changelog: "CHANGELOG.md"
+  - "User Guide":
+    - Commands: "user_guide/1-commands.md"
+    - "Migrating To Semver": "user_guide/2-migrating-to-semver.md"
+
+docs_dir: "user-docs"
+
+site_dir: "user-site"
+
+watch:
+  - "user-docs"
+
+theme:
+  name: "material"

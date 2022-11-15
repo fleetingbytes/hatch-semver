@@ -1,9 +1,11 @@
 #!/usr/bin/env python
 
 
-from hatch_semver.bump_instruction import BumpInstruction as BI
-import pytest
 from typing import Optional
+
+import pytest
+
+from hatch_semver.bump_instruction import BumpInstruction as BI
 
 
 class TestInvalidToken:
