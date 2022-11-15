@@ -126,25 +126,6 @@ exclude_lines = [
 [tool.black]
     line-length = 102
 
-#[tool.portray]
-
-#[tool.portray.mkdocs]
-
-#[[tool.portray.mkdocs.nav]]
-#Home = "README.md"
-
-#[[tool.portray.mkdocs.nav]]
-#Changelog = "CHANGELOG.md"
-
-#[[tool.portray.mkdocs.nav]]
-    #[[tool.portray.mkdocs.nav."User Guide"]]
-    #"Commands" = "docs/user_guide/1-commands.md"
-
-    #[[tool.portray.mkdocs.nav."User Guide"]]
-    #"Migrating To Semver" = "docs/user_guide/2-migrating-to-semver.md"
-
-#[tool.portray.pdocs]
-
 [tool.towncrier]
 name = "hatch-semver"
 package = "hatch_semver"
