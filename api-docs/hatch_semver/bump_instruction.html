@@ -34,7 +34,22 @@ from typing import ClassVar, Optional
 
 @dataclass
 class BumpInstruction:
+    &#34;&#34;&#34;
+    A dataclass for representing a single instruction from the
+    chain of bump instructions (i.e. a part of the *desired_version*
+    argument of `hatch_semver.semver_scheme.SemverScheme.update`.
+
+    Takes a single string as an argument and calculates the values
+    of an instance&#39;s attributes.
+    &#34;&#34;&#34;
+
     sep: ClassVar[str] = &#34;=&#34;
+    &#34;&#34;&#34;
+    Value: `=`.
+    Separator of the version segment&#39;s name and the value of its identifier.
+    Used to set a custom prerelease identifier, e.g. `prerelease=beta`
+    or a custom build identifier, e.g. `build=develop`.
+    &#34;&#34;&#34;
     acceptable_version_parts: ClassVar[tuple[str]] = (
         &#34;major&#34;,
         &#34;minor&#34;,
@@ -43,10 +58,38 @@ class BumpInstruction:
         &#34;build&#34;,
         &#34;release&#34;,
     )
+    &#34;&#34;&#34;
+    Used to decide whether the user wants to set a specific version or not
+    (see [is_specific](#hatch_semver.bump_instruction.BumpInstruction.is_specific))
+    If only a relative bump is requested, the bump instruction (which contains
+    the name of the version part to bump) would correspond to one of the strings in
+    this tuple. If not, then we assume that the string given in
+    [version_part](#hatch_semver.bump_instruction.BumpInstruction.version_part)
+    is a specific version.
+    &#34;&#34;&#34;
     version_part: str = field(init=False)
+    &#34;&#34;&#34;
+    Is either one of the 
+    [acceptable_version_parts](#hatch_semver.bump_instruction.BumpInstruction.acceptable_version_parts)
+    or one of their aliases. Can also hold the value of the a specific version
+    if the user wants to set it that way.
+    &#34;&#34;&#34;
     token: Optional[str] = field(init=False)
+    &#34;&#34;&#34;
+    Holds the value of a custom identifier, e.g. `beta`, or `develop`.
+    &#34;&#34;&#34;
     is_specific: bool = field(init=False)
+    &#34;&#34;&#34;
+    Information whether the user intends to set a specific version value,
+    rather than bump any of the version segments.
+    &#34;&#34;&#34;
     instruction: InitVar[str]
+    &#34;&#34;&#34;
+    Only available in the init phase of the instance. This is the raw
+    unparsed bump instruction. One part of the string given to
+    `hatch_semver.semver_scheme.SemverScheme.update`
+    as the *desired_version* argument.
+    &#34;&#34;&#34;
 
     def __post_init__(self, instruction) -&gt; None:
         if self.sep not in instruction:
@@ -60,6 +103,37 @@ class BumpInstruction:
 
     @classmethod
     def normalize_version_part(cls, part: str, token: str) -&gt; tuple[str, str, bool]:
+        &#34;&#34;&#34;
+        Effectively parses the raw string of the bump instruction into a tuple
+        of atomic values which it returns. The `BumpInstruction.__post_init__`
+        then assigns them to the instance&#39;s attributes.
+
+        Version parts (version segments) can be referred to by many names. 
+        For instance the *patch* segment can be called *micro* or *fix*, 
+        the *pre-release* segment *pre*, *rc*, etc.
+
+        This method normalizes all aliases to their native name
+        (see [acceptable_version_parts](#hatch_semver.bump_instruction.BumpInstruction.acceptable_version_parts).
+        It also handles shortcuts like `alpha` or `dev` which are actually 
+        `prerelease=alpha` or `build=dev` in their full syntax, i.e. they
+        are to be understood as a version part with a custom identifier.
+
+        ### Parameters
+        - *cls*: the `BumpInstruction` class.
+        - *part*: version part (`major`, `minor`, ...), alias (`rc`, `fix`, ...),
+                a shortcut (`alpha`, `dev`, ...), or a specific version (e.g. `3.4.5`)
+        - *token*: a custom token. If the user has specified something like `prerelease=alpha`,
+                `alpha` would be the token (what the pre-release identifier should be called).
+
+        ### Return
+        a tuple of:
+
+        - *part*: normalized to the native names defined in
+                [acceptable_version_parts](#hatch_semver.bump_instruction.BumpInstruction.acceptable_version_parts), or a specific version
+        - *token*: whatever the identifier&#39;s value should be
+        - *specific*: information whether *part* contains a specific version, 
+                rather than a version part
+        &#34;&#34;&#34;
         if part in (&#34;pre&#34;, &#34;prerelease&#34;, &#34;pre-release&#34;, &#34;rc&#34;):
             part = &#34;prerelease&#34;
         elif part in (&#34;micro&#34;, &#34;fix&#34;):
@@ -109,14 +183,33 @@ class BumpInstruction:
 <span>(</span><span>instruction: dataclasses.InitVar[str])</span>
 </code></dt>
 <dd>
-<div class="desc"><p>BumpInstruction(instruction: dataclasses.InitVar[str])</p></div>
+<div class="desc"><p>A dataclass for representing a single instruction from the
+chain of bump instructions (i.e. a part of the <em>desired_version</em>
+argument of <code><a title="hatch_semver.semver_scheme.SemverScheme.update" href="semver_scheme.html#hatch_semver.semver_scheme.SemverScheme.update">SemverScheme.update()</a></code>.</p>
+<p>Takes a single string as an argument and calculates the values
+of an instance's attributes.</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">@dataclass
 class BumpInstruction:
+    &#34;&#34;&#34;
+    A dataclass for representing a single instruction from the
+    chain of bump instructions (i.e. a part of the *desired_version*
+    argument of `hatch_semver.semver_scheme.SemverScheme.update`.
+
+    Takes a single string as an argument and calculates the values
+    of an instance&#39;s attributes.
+    &#34;&#34;&#34;
+
     sep: ClassVar[str] = &#34;=&#34;
+    &#34;&#34;&#34;
+    Value: `=`.
+    Separator of the version segment&#39;s name and the value of its identifier.
+    Used to set a custom prerelease identifier, e.g. `prerelease=beta`
+    or a custom build identifier, e.g. `build=develop`.
+    &#34;&#34;&#34;
     acceptable_version_parts: ClassVar[tuple[str]] = (
         &#34;major&#34;,
         &#34;minor&#34;,
@@ -125,10 +218,38 @@ class BumpInstruction:
         &#34;build&#34;,
         &#34;release&#34;,
     )
+    &#34;&#34;&#34;
+    Used to decide whether the user wants to set a specific version or not
+    (see [is_specific](#hatch_semver.bump_instruction.BumpInstruction.is_specific))
+    If only a relative bump is requested, the bump instruction (which contains
+    the name of the version part to bump) would correspond to one of the strings in
+    this tuple. If not, then we assume that the string given in
+    [version_part](#hatch_semver.bump_instruction.BumpInstruction.version_part)
+    is a specific version.
+    &#34;&#34;&#34;
     version_part: str = field(init=False)
+    &#34;&#34;&#34;
+    Is either one of the 
+    [acceptable_version_parts](#hatch_semver.bump_instruction.BumpInstruction.acceptable_version_parts)
+    or one of their aliases. Can also hold the value of the a specific version
+    if the user wants to set it that way.
+    &#34;&#34;&#34;
     token: Optional[str] = field(init=False)
+    &#34;&#34;&#34;
+    Holds the value of a custom identifier, e.g. `beta`, or `develop`.
+    &#34;&#34;&#34;
     is_specific: bool = field(init=False)
+    &#34;&#34;&#34;
+    Information whether the user intends to set a specific version value,
+    rather than bump any of the version segments.
+    &#34;&#34;&#34;
     instruction: InitVar[str]
+    &#34;&#34;&#34;
+    Only available in the init phase of the instance. This is the raw
+    unparsed bump instruction. One part of the string given to
+    `hatch_semver.semver_scheme.SemverScheme.update`
+    as the *desired_version* argument.
+    &#34;&#34;&#34;
 
     def __post_init__(self, instruction) -&gt; None:
         if self.sep not in instruction:
@@ -142,6 +263,37 @@ class BumpInstruction:
 
     @classmethod
     def normalize_version_part(cls, part: str, token: str) -&gt; tuple[str, str, bool]:
+        &#34;&#34;&#34;
+        Effectively parses the raw string of the bump instruction into a tuple
+        of atomic values which it returns. The `BumpInstruction.__post_init__`
+        then assigns them to the instance&#39;s attributes.
+
+        Version parts (version segments) can be referred to by many names. 
+        For instance the *patch* segment can be called *micro* or *fix*, 
+        the *pre-release* segment *pre*, *rc*, etc.
+
+        This method normalizes all aliases to their native name
+        (see [acceptable_version_parts](#hatch_semver.bump_instruction.BumpInstruction.acceptable_version_parts).
+        It also handles shortcuts like `alpha` or `dev` which are actually 
+        `prerelease=alpha` or `build=dev` in their full syntax, i.e. they
+        are to be understood as a version part with a custom identifier.
+
+        ### Parameters
+        - *cls*: the `BumpInstruction` class.
+        - *part*: version part (`major`, `minor`, ...), alias (`rc`, `fix`, ...),
+                a shortcut (`alpha`, `dev`, ...), or a specific version (e.g. `3.4.5`)
+        - *token*: a custom token. If the user has specified something like `prerelease=alpha`,
+                `alpha` would be the token (what the pre-release identifier should be called).
+
+        ### Return
+        a tuple of:
+
+        - *part*: normalized to the native names defined in
+                [acceptable_version_parts](#hatch_semver.bump_instruction.BumpInstruction.acceptable_version_parts), or a specific version
+        - *token*: whatever the identifier&#39;s value should be
+        - *specific*: information whether *part* contains a specific version, 
+                rather than a version part
+        &#34;&#34;&#34;
         if part in (&#34;pre&#34;, &#34;prerelease&#34;, &#34;pre-release&#34;, &#34;rc&#34;):
             part = &#34;prerelease&#34;
         elif part in (&#34;micro&#34;, &#34;fix&#34;):
@@ -180,27 +332,43 @@ class BumpInstruction:
 <dl>
 <dt id="hatch_semver.bump_instruction.BumpInstruction.acceptable_version_parts"><code class="name">var <span class="ident">acceptable_version_parts</span> : ClassVar[tuple[str]]</code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><p>Used to decide whether the user wants to set a specific version or not
+(see <a href="#hatch_semver.bump_instruction.BumpInstruction.is_specific">is_specific</a>)
+If only a relative bump is requested, the bump instruction (which contains
+the name of the version part to bump) would correspond to one of the strings in
+this tuple. If not, then we assume that the string given in
+<a href="#hatch_semver.bump_instruction.BumpInstruction.version_part">version_part</a>
+is a specific version.</p></div>
 </dd>
 <dt id="hatch_semver.bump_instruction.BumpInstruction.instruction"><code class="name">var <span class="ident">instruction</span> : dataclasses.InitVar[str]</code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><p>Only available in the init phase of the instance. This is the raw
+unparsed bump instruction. One part of the string given to
+<code><a title="hatch_semver.semver_scheme.SemverScheme.update" href="semver_scheme.html#hatch_semver.semver_scheme.SemverScheme.update">SemverScheme.update()</a></code>
+as the <em>desired_version</em> argument.</p></div>
 </dd>
 <dt id="hatch_semver.bump_instruction.BumpInstruction.is_specific"><code class="name">var <span class="ident">is_specific</span> : bool</code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><p>Information whether the user intends to set a specific version value,
+rather than bump any of the version segments.</p></div>
 </dd>
 <dt id="hatch_semver.bump_instruction.BumpInstruction.sep"><code class="name">var <span class="ident">sep</span> : ClassVar[str]</code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><p>Value: <code>=</code>.
+Separator of the version segment's name and the value of its identifier.
+Used to set a custom prerelease identifier, e.g. <code>prerelease=beta</code>
+or a custom build identifier, e.g. <code>build=develop</code>.</p></div>
 </dd>
 <dt id="hatch_semver.bump_instruction.BumpInstruction.token"><code class="name">var <span class="ident">token</span> : Optional[str]</code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><p>Holds the value of a custom identifier, e.g. <code>beta</code>, or <code>develop</code>.</p></div>
 </dd>
 <dt id="hatch_semver.bump_instruction.BumpInstruction.version_part"><code class="name">var <span class="ident">version_part</span> : str</code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><p>Is either one of the
+<a href="#hatch_semver.bump_instruction.BumpInstruction.acceptable_version_parts">acceptable_version_parts</a>
+or one of their aliases. Can also hold the value of the a specific version
+if the user wants to set it that way.</p></div>
 </dd>
 </dl>
 <h3>Static methods</h3>
@@ -209,13 +377,71 @@ class BumpInstruction:
 <span>def <span class="ident">normalize_version_part</span></span>(<span>part: str, token: str) ‑> tuple[str, str, bool]</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><p>Effectively parses the raw string of the bump instruction into a tuple
+of atomic values which it returns. The <code>BumpInstruction.__post_init__</code>
+then assigns them to the instance's attributes.</p>
+<p>Version parts (version segments) can be referred to by many names.
+For instance the <em>patch</em> segment can be called <em>micro</em> or <em>fix</em>,
+the <em>pre-release</em> segment <em>pre</em>, <em>rc</em>, etc.</p>
+<p>This method normalizes all aliases to their native name
+(see <a href="#hatch_semver.bump_instruction.BumpInstruction.acceptable_version_parts">acceptable_version_parts</a>.
+It also handles shortcuts like <code>alpha</code> or <code>dev</code> which are actually
+<code>prerelease=alpha</code> or <code>build=dev</code> in their full syntax, i.e. they
+are to be understood as a version part with a custom identifier.</p>
+<h3 id="parameters">Parameters</h3>
+<ul>
+<li><em>cls</em>: the <code><a title="hatch_semver.bump_instruction.BumpInstruction" href="#hatch_semver.bump_instruction.BumpInstruction">BumpInstruction</a></code> class.</li>
+<li><em>part</em>: version part (<code>major</code>, <code>minor</code>, &hellip;), alias (<code>rc</code>, <code>fix</code>, &hellip;),
+a shortcut (<code>alpha</code>, <code>dev</code>, &hellip;), or a specific version (e.g. <code>3.4.5</code>)</li>
+<li><em>token</em>: a custom token. If the user has specified something like <code>prerelease=alpha</code>,
+<code>alpha</code> would be the token (what the pre-release identifier should be called).</li>
+</ul>
+<h3 id="return">Return</h3>
+<p>a tuple of:</p>
+<ul>
+<li><em>part</em>: normalized to the native names defined in
+<a href="#hatch_semver.bump_instruction.BumpInstruction.acceptable_version_parts">acceptable_version_parts</a>, or a specific version</li>
+<li><em>token</em>: whatever the identifier's value should be</li>
+<li><em>specific</em>: information whether <em>part</em> contains a specific version,
+rather than a version part</li>
+</ul></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">@classmethod
 def normalize_version_part(cls, part: str, token: str) -&gt; tuple[str, str, bool]:
+    &#34;&#34;&#34;
+    Effectively parses the raw string of the bump instruction into a tuple
+    of atomic values which it returns. The `BumpInstruction.__post_init__`
+    then assigns them to the instance&#39;s attributes.
+
+    Version parts (version segments) can be referred to by many names. 
+    For instance the *patch* segment can be called *micro* or *fix*, 
+    the *pre-release* segment *pre*, *rc*, etc.
+
+    This method normalizes all aliases to their native name
+    (see [acceptable_version_parts](#hatch_semver.bump_instruction.BumpInstruction.acceptable_version_parts).
+    It also handles shortcuts like `alpha` or `dev` which are actually 
+    `prerelease=alpha` or `build=dev` in their full syntax, i.e. they
+    are to be understood as a version part with a custom identifier.
+
+    ### Parameters
+    - *cls*: the `BumpInstruction` class.
+    - *part*: version part (`major`, `minor`, ...), alias (`rc`, `fix`, ...),
+            a shortcut (`alpha`, `dev`, ...), or a specific version (e.g. `3.4.5`)
+    - *token*: a custom token. If the user has specified something like `prerelease=alpha`,
+            `alpha` would be the token (what the pre-release identifier should be called).
+
+    ### Return
+    a tuple of:
+
+    - *part*: normalized to the native names defined in
+            [acceptable_version_parts](#hatch_semver.bump_instruction.BumpInstruction.acceptable_version_parts), or a specific version
+    - *token*: whatever the identifier&#39;s value should be
+    - *specific*: information whether *part* contains a specific version, 
+            rather than a version part
+    &#34;&#34;&#34;
     if part in (&#34;pre&#34;, &#34;prerelease&#34;, &#34;pre-release&#34;, &#34;rc&#34;):
         part = &#34;prerelease&#34;
     elif part in (&#34;micro&#34;, &#34;fix&#34;):

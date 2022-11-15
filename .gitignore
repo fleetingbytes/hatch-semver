@@ -10,8 +10,8 @@ config.ini
 Out-Null
 
 # automatically generated files
-site/
-docs/preconvert
+user-site/
+api-site/
 
 # Vim files
 *~

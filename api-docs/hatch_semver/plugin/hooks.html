@@ -34,8 +34,17 @@ from hatchling.plugin import hookimpl
 from ..semver_scheme import SemverScheme
 
 
+&#34;&#34;&#34;
+The registration hook for [hatch](https://github.com/pypa/hatch/tree/master/backend/src/hatchling/plugin)
+&#34;&#34;&#34;
+
+
 @hookimpl
 def hatch_register_version_scheme():
+    &#34;&#34;&#34;
+    Returns `hatch_semver.semver_scheme.SemverScheme`. 
+    By this our plugin can be somehow registered in [hatch](https://hatch.pypa.io/).
+    &#34;&#34;&#34;
     return SemverScheme</code></pre>
 </details>
 </section>
@@ -50,13 +59,18 @@ def hatch_register_version_scheme():
 <span>def <span class="ident">hatch_register_version_scheme</span></span>(<span>)</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><p>Returns <code><a title="hatch_semver.semver_scheme.SemverScheme" href="../semver_scheme.html#hatch_semver.semver_scheme.SemverScheme">SemverScheme</a></code>.
+By this our plugin can be somehow registered in <a href="https://hatch.pypa.io/">hatch</a>.</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">@hookimpl
 def hatch_register_version_scheme():
+    &#34;&#34;&#34;
+    Returns `hatch_semver.semver_scheme.SemverScheme`. 
+    By this our plugin can be somehow registered in [hatch](https://hatch.pypa.io/).
+    &#34;&#34;&#34;
     return SemverScheme</code></pre>
 </details>
 </dd>
