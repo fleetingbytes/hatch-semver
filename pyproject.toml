@@ -106,10 +106,13 @@ dependencies = [
 build = "pdoc --html --force --output-dir api-site hatch_semver"
 serve = "pdoc --http : hatch_semver"
 userve = [
-    "copy /Y CHANGELOG.md docs",
     "mkdocs serve",
 ]
-tc = "towncrier build --yes"
+tc = [
+    "towncrier build --yes",
+    "Copy-Item -path ./CHANGELOG.md -destination ./docs -force",
+    "git add -u",
+]
 
 [[tool.hatch.envs.test.matrix]]
 python = ["310"]
