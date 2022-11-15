@@ -7,12 +7,16 @@ nav:
     - Commands: "user_guide/1-commands.md"
     - "Migrating To Semver": "user_guide/2-migrating-to-semver.md"
 
-docs_dir: "user-docs"
+docs_dir: "docs"
 
 site_dir: "user-site"
 
 watch:
+<<<<<<< HEAD
+  - "docs"
+=======
   - "user-docs"
+>>>>>>> master
 
 theme:
   name: "material"
