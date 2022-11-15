@@ -93,8 +93,9 @@ fmt = [
 [tool.hatch.envs.docs]
 dependencies = [
     "mkdocs",
-    "pdoc3",
     "mkdocs-material",
+    "pdoc3",
+    "towncrier",
 ]
 
 [tool.hatch.envs.docs.scripts]
@@ -104,6 +105,7 @@ userve = [
     "copy /Y CHANGELOG.md docs",
     "mkdocs serve",
 ]
+tc = "towncrier build --yes"
 
 [[tool.hatch.envs.test.matrix]]
 python = ["310"]
