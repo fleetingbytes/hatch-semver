@@ -2,6 +2,15 @@
 
 <!-- towncrier release notes start -->
 
+## [0.2.4](https://github.com/Nagidal/hatch-semver/tree/0.2.4) - 2022-11-15
+
+
+### Development Details
+
+- Using PowerShell instead of cmd commands in pyproject [#35](https://github.com/Nagidal/hatch-semver/issues/35)
+- Added githooks to the repo. Set your core.hookspath to `.githooks` [#36](https://github.com/Nagidal/hatch-semver/issues/36)
+
+
 ## [0.2.4-rc.1](https://github.com/Nagidal/hatch-semver/tree/0.2.4-rc.1) - 2022-11-15
 
 

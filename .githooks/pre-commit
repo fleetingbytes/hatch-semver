@@ -1,0 +1,21 @@
+#!/bin/sh
+# Copy or link this script into .git/hooks/
+# It runs automatically in the project root directory (parent of .git/).
+
+
+# Format python code
+black .
+black_retval=$?
+if [ $black_retval -ne 0 ]; then
+    exit 1
+fi
+
+# Sort imports
+isort .
+isort_retval=$?
+if [ $isort_retval -ne 0 ]; then
+    exit 1
+fi
+
+# add updated files
+git add -u
