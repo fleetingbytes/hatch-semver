@@ -12,7 +12,11 @@ docs_dir: "docs"
 site_dir: "user-site"
 
 watch:
+<<<<<<< HEAD
   - "docs"
+=======
+  - "user-docs"
+>>>>>>> master
 
 theme:
   name: "material"
