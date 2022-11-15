@@ -1,4 +1,6 @@
 site_name: Hatch Semver
+site_url: https://nagidal.github.io/hatch-semver/
+repo_url: https://github.com/Nagidal/hatch-semver
 
 nav:
   - Home: "home.md"
@@ -9,7 +11,7 @@ nav:
 
 docs_dir: "docs"
 
-site_dir: "user-site"
+site_dir: "site"
 
 watch:
   - "docs"
