@@ -25,11 +25,11 @@ validate-bump = True
 scheme = "semver"
 ```
 
-### Beware
+!!! warning
 
-Hatch-semver plugin will only work with project versions which can be readily parsed by [python-semver][python-semver].
-Therefore, if you are introducing hatch-semver into an existing project, you must **make sure that the project's current version is a valid semantic version.**
-You can test that [here][semver-regex].
+    Hatch-semver plugin will only work with project versions which can be readily parsed by [python-semver][python-semver].
+    Therefore, if you are introducing hatch-semver into an existing project, you must **make sure that the project's current version is a valid semantic version.**
+    You can test that [here][semver-regex].
 
 ## Quick Start
 

@@ -19,3 +19,12 @@ watch:
 
 theme:
   name: "material"
+  icon:
+    admonition:
+      warning: octicons/alert-24
+
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
