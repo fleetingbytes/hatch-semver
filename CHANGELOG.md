@@ -2,6 +2,19 @@
 
 <!-- towncrier release notes start -->
 
+## [1.0.0-rc.4](https://github.com/Nagidal/hatch-semver/tree/1.0.0-rc.4) - 2022-11-16
+
+
+### Documentation
+
+- Renamed User Documentation Workflow to Master PR Closed [#53](https://github.com/Nagidal/hatch-semver/issues/53)
+
+
+### Development Details
+
+- Test stage is set up [#51](https://github.com/Nagidal/hatch-semver/issues/51)
+
+
 ## [1.0.0-rc.3](https://github.com/Nagidal/hatch-semver/tree/1.0.0-rc.3) - 2022-11-16
 
 
