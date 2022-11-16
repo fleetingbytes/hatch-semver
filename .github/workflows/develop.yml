@@ -32,4 +32,4 @@ jobs:
     needs: test
     name: Finish coverage
     steps:
-      - run: echo "Test was OK"
+      - run: echo Test was OK
