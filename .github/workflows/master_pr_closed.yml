@@ -1,6 +1,6 @@
 name: Master PR Closed Workflow
 on:
-  pull-request:
+  pull_request:
     types:
       - closed
     branches:
