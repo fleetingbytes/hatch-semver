@@ -111,9 +111,8 @@ userve = [
 tc = [
     "towncrier build --yes",
     "Copy-Item -path ./CHANGELOG.md -destination ./docs -force",
-    "git add CHANGELOG.md",
-    "git add docs/CHANGELOG.md",
-    "git commit -m \"updated changelog\""
+    "git add --update",
+    "git commit --message \"updated changelog\""
 ]
 
 [[tool.hatch.envs.test.matrix]]

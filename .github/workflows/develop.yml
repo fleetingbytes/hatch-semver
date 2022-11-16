@@ -1,0 +1,37 @@
+name: Develop Workflow
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  test:
+    strategy:
+      matrix:
+        python-version:
+          - "3.9"
+          - "3.10"
+          - "3.11"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install wheel
+          pip install hatch pytest pytest-cov
+          pip install .
+      - name: Test with pytest
+        run: |
+          pytest -v --cov-report= --cov=hatch_semver tests/
+  coverage-finish:
+    needs: test
+    runs-on: ubuntu-latest
+    name: Finish coverage
+    steps:
+      - run: echo Test was OK
