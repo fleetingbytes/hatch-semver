@@ -2,6 +2,35 @@
 
 <!-- towncrier release notes start -->
 
+## [1.0.0-rc.3](https://github.com/Nagidal/hatch-semver/tree/1.0.0-rc.3) - 2022-11-16
+
+
+### Documentation
+
+- Using admonitions [#44](https://github.com/Nagidal/hatch-semver/issues/44)
+- Using a note admonition in `index.md` [#49](https://github.com/Nagidal/hatch-semver/issues/49)
+
+
+### Development Details
+
+- Using actions/checkout@v3 in the CI [#46](https://github.com/Nagidal/hatch-semver/issues/46)
+- Using setup-python@v4 in the CI [#47](https://github.com/Nagidal/hatch-semver/issues/47)
+
+
+## [1.0.0-rc.2](https://github.com/Nagidal/hatch-semver/tree/1.0.0-rc.2) - 2022-11-16
+
+
+### Documentation
+
+- Using admonitions [#44](https://github.com/Nagidal/hatch-semver/issues/44)
+
+
+### Development Details
+
+- Using actions/checkout@v3 in the CI [#46](https://github.com/Nagidal/hatch-semver/issues/46)
+- Using setup-python@v4 in the CI [#47](https://github.com/Nagidal/hatch-semver/issues/47)
+
+
 ## [1.0.0-rc.1](https://github.com/Nagidal/hatch-semver/tree/1.0.0-rc.1) - 2022-11-16
 
 
