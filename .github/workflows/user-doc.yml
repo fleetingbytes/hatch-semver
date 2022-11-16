@@ -1,4 +1,4 @@
-name: ci
+name: User Documentation
 on:
   push:
     branches:
@@ -12,5 +12,6 @@ jobs:
       - uses: actions/setup-python@v2
         with:
           python-version: 3.x
+      - run: pip install --upgrade pip
       - run: pip install mkdocs-material
-      - run: mkdocs gh-deploy --force
+      - run: mkdocs gh-deploy --force --clean

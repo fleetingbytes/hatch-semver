@@ -4,7 +4,7 @@ repo_url: https://github.com/Nagidal/hatch-semver
 site_author: Sven Siegmund
 
 nav:
-  - Home: "home.md"
+  - Home: "index.md"
   - Changelog: "CHANGELOG.md"
   - "User Guide":
     - Commands: "user_guide/1-commands.md"
