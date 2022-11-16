@@ -14,9 +14,10 @@ jobs:
           - 3.11
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repository
       - uses: actions/checkout@v3
       - name: Set up python
-        uses: actions/setup-python@v4
+      - uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
           parallel: true
@@ -30,3 +31,5 @@ jobs:
   coverage-finish:
     needs: test
     name: Finish coverage
+    steps:
+      - run: echo "Test was OK"
