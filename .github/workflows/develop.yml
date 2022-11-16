@@ -25,6 +25,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install wheel
           pip install hatch pytest pytest-cov
+          pip install ./hatch-semver
       - name: Test with pytest
         run: |
           pytest -v --cov-report= --cov=hatch_semver tests/
