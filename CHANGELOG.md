@@ -2,6 +2,14 @@
 
 <!-- towncrier release notes start -->
 
+## [1.0.0](https://github.com/Nagidal/hatch-semver/tree/1.0.0) - 2022-11-17
+
+
+### New Features
+
+- Released v1.0.0 [#57](https://github.com/Nagidal/hatch-semver/issues/57)
+
+
 ## [1.0.0-rc.4](https://github.com/Nagidal/hatch-semver/tree/1.0.0-rc.4) - 2022-11-16
 
 

@@ -1,6 +1,6 @@
 # Migrating From Hatch Standard Versioning Scheme
 
-If you have used the hatch [standard][hatch_versioning] versioning scheme plugin before and now want to use this semver plugin instead, here is a short rundown of the similarities and differences betweent the two and their use.
+If you have used the hatch [standard][hatch_versioning] versioning scheme plugin before and now want to use this semver plugin instead, here is a short rundown of the similarities and differences between the two and their use.
 
 
 ### Identical or Similar Behavior
