@@ -2,6 +2,22 @@
 
 <!-- towncrier release notes start -->
 
+## [1.0.1](https://github.com/Nagidal/hatch-semver/tree/1.0.1) - 2022-11-17
+
+
+### Documentation
+
+- Fixed typos and errors in the documentation [#59](https://github.com/Nagidal/hatch-semver/issues/59)
+- Set correct project homepage in `pyproject.toml`. It should be now linked from [PyPI](https://pypi.org/project/hatch-semver/). [#64](https://github.com/Nagidal/hatch-semver/issues/64)
+
+
+### Development Details
+
+- Set current date in `__about__.py` [#61](https://github.com/Nagidal/hatch-semver/issues/61)
+- Wrote a test for current date in `__about__.py` [#62](https://github.com/Nagidal/hatch-semver/issues/62)
+- Wrote a test for current version in the changelog [#63](https://github.com/Nagidal/hatch-semver/issues/63)
+
+
 ## [1.0.0](https://github.com/Nagidal/hatch-semver/tree/1.0.0) - 2022-11-17
 
 
