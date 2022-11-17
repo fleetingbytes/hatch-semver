@@ -49,8 +49,10 @@ dynamic = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/Nagidal/hatch-semver"
+Homepage = "https://nagidal.github.io/hatch-semver/"
+Repository = "https://github.com/Nagidal/hatch-semver"
 Issues = "https://github.com/Nagidal/hatch-semver/issues"
+PyPI = "https://pypi.org/project/hatch-semver/"
 
 [project.entry-points.hatch]
 semver = "hatch_semver.plugin.hooks"
