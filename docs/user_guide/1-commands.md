@@ -152,13 +152,13 @@ Same as with pre-releases, this is prone to a [bug in python-semver][bug].
 | `1.0.0+fix-docs.2`     | `build=docs-fixed`  | `1.0.0+fix-docs.3` <sup>[bug][bug]</sup> |
 
 Build versions are all of the same precedence, so technically, a version bump does not occur.
-Normally, [bump-validation][validation] checks whether the resulting version is of the same precedence as the old one. 
+Normally, [bump-validation][validation] checks whether the resulting version is higher than the old one. 
 However, if all that changes is the build identifier, a version of equal precedence is sufficient to pass the validation. 
 
-| Old Version            | Command             | validate-bump | New Version          |
-| ---------------------- | ------------------- | ------------- | -------------------- |
+| Old Version            | Command             | validate-bump | New Version            |
+| ---------------------- | ------------------- | ------------- | ---------------------- |
 | `4.8.5-rc.2`           | `build=tracing`     | True          | `4.8.5-rc.2+tracing.1` |
-| `4.8.5-rc.2+tracing.2` | `4.8.5-rc.2+debug`  | True          | `4.8.5-rc.2+debug`   |
+| `4.8.5-rc.2+tracing.2` | `4.8.5-rc.2+debug`  | True          | `4.8.5-rc.2+debug`     |
 
 ### Development Build Shortcut
 
@@ -177,7 +177,7 @@ Similar to the [alpha and beta][ab-short] shortcuts, `dev` is not an alias, so d
 
 Similar to [python-semver's][python-semver] inability to bump alphanumeric pre-release identifiers, alphanumeric build identifiers will also not be bumped.
 The returned result is the exact same version.
-A ValidationError is not raised because when bumping or changing build identifiers equal precedece of the old and new version is sufficient.
+A ValidationError is not raised because when bumping or changing build identifiers, equal precedece of the old and new version is sufficient.
 
 | Old Version            | Command             | validate-bump | New Version          |
 | ---------------------- | ------------------- | ------------- | -------------------- |
@@ -189,7 +189,7 @@ You can chain commands together by comma like this: `<command1>,<command2>,<comm
 They are executed one by one in the specified sequence. Some straight-forward and most common examples of chained commands are presented in the [pre-release][chained-pre] section.
 
 The bump validation check is performed only after the last command is executed. 
-It is therefore OK to temporarily violate the version precedence rule for the intermediate versions as long as the last resulting version passes the validation agains the old version.
+It is therefore OK to temporarily violate the version precedence rule for the intermediate versions as long as the last resulting version passes the validation against the old version.
 
 | Old Version            | Command             | validate-bump | New Version          |
 | ---------------------- | ------------------- | ------------- | -------------------- |
