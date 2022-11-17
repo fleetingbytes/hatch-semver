@@ -54,7 +54,7 @@ There is no concept of a revision or a post-release in [Semver][semver].
 However, with `build=post`, for instance you could add the build identifiers *post* and *1* which would be similar to a PEP 440 post-release.
 Like in PEP 440, also in Semver build identifiers have the same precedence.
 
-The abbreviations `a`, `b`, and `c` for `alpha`, `beta`, `rc`, and `preview`,respectively, are also not supported and will result in [python-semver][python-semver] throwing a `ValueError` with *... is not a valid SemVer string*. Hatch-semver actually uses `pre` as an alias for [pre-release][prerelease].
+The abbreviations `a`, `b`, and `c` for `alpha`, `beta`, `rc`, and `preview`, respectively, are also not supported and will result in [python-semver][python-semver] throwing a `ValueError` with *... is not a valid SemVer string*. Hatch-semver actually uses `pre` as an alias for [pre-release][prerelease].
 
 Semver allows custom identifiers in prereleases, so if you really wanted an `a0` pre-release, you could achieve it by bumping to a specific version, i.e. `hatch version 1.2.3-a0` although such alphanumeric identifiers [cannot be bumped][unbumpable] by [python-semver].
 Better go with `1.2.3-a.1` which could be bumped to `1.2.3-a.2`, `1.2.3-a.3` etc.
