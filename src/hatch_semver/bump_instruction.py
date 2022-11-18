@@ -4,7 +4,6 @@ from typing import ClassVar, Optional
 from dataclasses import InitVar, dataclass, field
 
 
-
 @dataclass
 class BumpInstruction:
     """
