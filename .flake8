@@ -1,5 +1,0 @@
-[flake8]
-ignore = W503, W505, E501
-max-line-length = 102
-max-doc-length = 102
-max-complexity = 10
