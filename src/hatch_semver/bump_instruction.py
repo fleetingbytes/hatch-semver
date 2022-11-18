@@ -117,7 +117,9 @@ class BumpInstruction:
                         (
                             f"{part} version cannot be set to {token} directly.",
                             f"Use 'prerelease={part}' instead",
-                        )))
+                        )
+                    )
+                )
             token = part
             part = "prerelease"
         elif part in ("dev",):
