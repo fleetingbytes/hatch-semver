@@ -29,8 +29,6 @@ jobs:
       - name: Run Black
         uses: wearerequired/lint-action@v2.1.0
         with:
-          auto_fix: false
-          black: false
-          black_auto_fix: false
+          black: true
       - name: Run isort
         uses: isort/isort-action@v1.1.0
