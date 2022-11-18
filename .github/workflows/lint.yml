@@ -34,3 +34,5 @@ jobs:
           black_auto_fix: true
       - name: Run isort
         uses: isort/isort-action@v1.1.0
+        with:
+          configuration: []
