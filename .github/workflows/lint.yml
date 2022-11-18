@@ -1,17 +1,14 @@
 name: Lint
 
 on:
-  push:
-    branches:
-      - testlint
   pull_request_target:
-    types: [opened, synchronize, reopened]
     branches:
-      - testlint
+      - develop
+      - master
 
 jobs:
-  run-linters:
-    name: Run linters
+  lint:
+    name: Linting
     runs-on: ubuntu-latest
 
     steps:
