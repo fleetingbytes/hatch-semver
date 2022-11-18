@@ -66,6 +66,7 @@ scheme = "semver"
 
 [tool.hatch.envs.default]
 dependencies = [
+    "pre-commit",
     "pytest",
     "pytest-cov",
     "wheel",

@@ -1,0 +1,4 @@
+[flake8]
+ignore = W503
+max-doc-length = 102
+max-complexity = 10
