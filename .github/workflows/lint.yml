@@ -35,4 +35,4 @@ jobs:
       - name: Run isort
         uses: isort/isort-action@v1.1.0
         with:
-          configuration: ""
+          configuration: "."
