@@ -70,7 +70,8 @@ class BumpInstruction:
         else:
             raw_version_part, raw_token = instruction.split(self.sep, maxsplit=1)
         self.version_part, self.token, self.is_specific = self.normalize_version_part(
-            raw_version_part, raw_token)
+            raw_version_part, raw_token
+        )
 
     @classmethod
     def normalize_version_part(cls, part: str, token: str) -> tuple[str, str, bool]:
@@ -116,7 +117,9 @@ class BumpInstruction:
                         (
                             f"{part} version cannot be set to {token} directly.",
                             f"Use 'prerelease={part}' instead",
-                        )))
+                        )
+                    )
+                )
             token = part
             part = "prerelease"
         elif part in ("dev",):
