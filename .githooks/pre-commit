@@ -4,12 +4,6 @@
 
 
 # Format python code
-flake8 .
-flake8_retval=$?
-if [ $flake8_retval -ne 0 ]; then
-    exit 1
-fi
-
 black .
 black_retval=$?
 if [ $black_retval -ne 0 ]; then
