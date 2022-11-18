@@ -29,10 +29,14 @@ jobs:
           pip install .
       - name: Test with pytest
         run: |
-          pytest -v --cov-report= --cov=hatch_semver tests/
+          pytest -v --cov-report lcovd:cov.info --cov=./hatch_semver
   coverage-finish:
     needs: test
     runs-on: ubuntu-latest
-    name: Finish coverage
     steps:
-      - run: echo Test was OK
+    - name: Finish coverage
+      uses: coverallsapp/github-action@v1.1.3
+      with:
+        github-token: ${{ secrets.github_token }}
+        parallel-finished: true
+
