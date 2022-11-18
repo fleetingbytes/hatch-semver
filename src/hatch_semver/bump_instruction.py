@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
-from dataclasses import InitVar, dataclass, field
 from typing import ClassVar, Optional
+from dataclasses import InitVar, dataclass, field
 
 
 @dataclass
@@ -117,9 +117,7 @@ class BumpInstruction:
                         (
                             f"{part} version cannot be set to {token} directly.",
                             f"Use 'prerelease={part}' instead",
-                        )
-                    )
-                )
+                        )))
             token = part
             part = "prerelease"
         elif part in ("dev",):
