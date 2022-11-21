@@ -29,10 +29,4 @@ jobs:
           pip install .
       - name: Test with pytest
         run: |
-          pytest -v --cov-report= --cov=hatch_semver tests/
-  coverage-finish:
-    needs: test
-    runs-on: ubuntu-latest
-    name: Finish coverage
-    steps:
-      - run: echo Test was OK
+          pytest -v --cov-report lcov:./coverage/lcov.info --cov=./hatch_semver
