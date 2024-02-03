@@ -76,7 +76,7 @@ If the [version core][bnf] is bumped before the pre-release bump, the pre-releas
 
 ### Alphanumeric Pre-Release Identifiers
 
-If pre-release identifiers are present but the last one is an [alphanumeric identifier][bnf]—i.e. not a number—it **will not be bumped** and no further identifiers are introduced (current [python-semver][python-semver] behavior). 
+If pre-release identifiers are present but the last one is an [alphanumeric identifier][bnf]—i.e. not a number—it **will not be bumped** and no further identifiers are introduced (current [python-semver][python-semver] behavior<sup>[issue][issue]</sup>). 
 This will normally result in a `ValidationError`, unless you have turned off [validate-bump][validation] in your hatch version settings.
 
 | Old Version            | Command             | validate-bump | New Version          |
@@ -175,7 +175,7 @@ Similar to the [alpha and beta][ab-short] shortcuts, `dev` is not an alias, so d
 
 ### Alphanumeric Build Identifiers
 
-Similar to [python-semver's][python-semver] inability to bump alphanumeric pre-release identifiers, alphanumeric build identifiers will also not be bumped.
+Similar to [python-semver's][python-semver] inability to bump alphanumeric pre-release identifiers, alphanumeric build identifiers will also not be bumped <sup>[issue][issue]</sup>.
 The returned result is the exact same version.
 A ValidationError is not raised because when bumping or changing build identifiers, equal precedece of the old and new version is sufficient.
 
@@ -203,6 +203,7 @@ It is therefore OK to temporarily violate the version precedence rule for the in
 [bnf]: https://semver.org/#backusnaur-form-grammar-for-valid-semver-versions
 [python-semver]: https://github.com/python-semver/python-semver
 [bug]: https://github.com/python-semver/python-semver/issues/339
+[issue]: https://github.com/python-semver/python-semver/issues/369
 [specific-version]: #specific-version
 [semver-regex]: https://regex101.com/r/Ly7O1x/3/
 [chained-commands]: #chained-commands
