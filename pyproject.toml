@@ -50,8 +50,8 @@ dynamic = [
 
 [project.urls]
 Homepage = "https://nagidal.github.io/hatch-semver/"
-Repository = "https://github.com/Nagidal/hatch-semver"
-Issues = "https://github.com/Nagidal/hatch-semver/issues"
+Repository = "https://github.com/fleetingbytes/hatch-semver"
+Issues = "https://github.com/fleetingbytes/hatch-semver/issues"
 PyPI = "https://pypi.org/project/hatch-semver/"
 
 [project.entry-points.hatch]
@@ -146,8 +146,8 @@ filename = "CHANGELOG.md"
 start_string = "<!-- towncrier release notes start -->\n"
 underlines = ["", "", ""]
 template = "changelog.d/changelog_template.jinja"
-title_format = "## [{version}](https://github.com/Nagidal/hatch-semver/tree/{version}) - {project_date}"
-issue_format = "[#{issue}](https://github.com/Nagidal/hatch-semver/issues/{issue})"
+title_format = "## [{version}](https://github.com/fleetingbytes/hatch-semver/tree/{version}) - {project_date}"
+issue_format = "[#{issue}](https://github.com/fleetingbytes/hatch-semver/issues/{issue})"
 orphan_prefix = "+"
 
 [tool.towncrier.fragment.doc]
