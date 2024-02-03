@@ -8,4 +8,4 @@ __author_email__ = "sven.siegmund@gmail.com"
 __maintainer__ = __author__
 __maintainer_email__ = __author_email__
 __release_date__ = date(year=2024, month=2, day=3)
-__version__ = "1.0.1"
+__version__ = "2.0.0"
