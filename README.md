@@ -58,5 +58,5 @@ See the [command reference][commands] for all the commands in full detail. If yo
 [python-semver]: https://github.com/python-semver/python-semver/tree/maint/v2
 [semver-regex]: https://regex101.com/r/Ly7O1x/3/
 [semver]: https://semver.org/
-[commands]: https://nagidal.github.io/hatch-semver/user_guide/1-commands/
-[comparison]: https://nagidal.github.io/hatch-semver/user_guide/2-migrating-to-semver/
+[commands]: https://fleetingbytes.github.io/hatch-semver/user_guide/1-commands/
+[comparison]: https://fleetingbytes.github.io/hatch-semver/user_guide/2-migrating-to-semver/

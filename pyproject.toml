@@ -1,6 +1,6 @@
 [build-system]
 requires = [
-    "hatchling>=1.8.0",
+    "hatchling",
     "hatch-semver",
 ]
 build-backend = "hatchling.build"
@@ -24,9 +24,9 @@ keywords = [
 ]
 
 classifiers = [
-    "Development Status :: 3 - Alpha",
+    #"Development Status :: 3 - Alpha",
     #"Development Status :: 4 - Beta",
-    #"Development Status :: 5 - Production/Stable",
+    "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Developers",
     "Topic :: Software Development",
     "Framework :: Hatch",
@@ -41,7 +41,7 @@ classifiers = [
 
 dependencies = [
     "hatchling",
-    "semver ~= 2.13.0",
+    "semver",
 ]
 
 dynamic = [
@@ -49,9 +49,9 @@ dynamic = [
 ]
 
 [project.urls]
-Homepage = "https://nagidal.github.io/hatch-semver/"
-Repository = "https://github.com/Nagidal/hatch-semver"
-Issues = "https://github.com/Nagidal/hatch-semver/issues"
+Homepage = "https://fleetingbytes.github.io/hatch-semver/"
+Repository = "https://github.com/fleetingbytes/hatch-semver"
+Issues = "https://github.com/fleetingbytes/hatch-semver/issues"
 PyPI = "https://pypi.org/project/hatch-semver/"
 
 [project.entry-points.hatch]
@@ -112,13 +112,13 @@ userve = [
 ]
 tc = [
     "towncrier build --yes",
-    "Copy-Item -path ./CHANGELOG.md -destination ./docs -force",
+    #"Copy-Item -path ./CHANGELOG.md -destination ./docs -force",
     "git add --update",
     "git commit --message \"updated changelog\""
 ]
 
 [[tool.hatch.envs.test.matrix]]
-python = ["310"]
+python = ["311"]
 
 [tool.coverage.run]
 branch = true
@@ -146,8 +146,8 @@ filename = "CHANGELOG.md"
 start_string = "<!-- towncrier release notes start -->\n"
 underlines = ["", "", ""]
 template = "changelog.d/changelog_template.jinja"
-title_format = "## [{version}](https://github.com/Nagidal/hatch-semver/tree/{version}) - {project_date}"
-issue_format = "[#{issue}](https://github.com/Nagidal/hatch-semver/issues/{issue})"
+title_format = "## [{version}](https://github.com/fleetingbytes/hatch-semver/tree/{version}) - {project_date}"
+issue_format = "[#{issue}](https://github.com/fleetingbytes/hatch-semver/issues/{issue})"
 orphan_prefix = "+"
 
 [tool.towncrier.fragment.doc]
