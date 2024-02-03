@@ -1,6 +1,6 @@
 [build-system]
 requires = [
-    "hatchling>=1.8.0",
+    "hatchling",
     "hatch-semver",
 ]
 build-backend = "hatchling.build"
@@ -24,9 +24,9 @@ keywords = [
 ]
 
 classifiers = [
-    "Development Status :: 3 - Alpha",
+    #"Development Status :: 3 - Alpha",
     #"Development Status :: 4 - Beta",
-    #"Development Status :: 5 - Production/Stable",
+    "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Developers",
     "Topic :: Software Development",
     "Framework :: Hatch",
@@ -112,7 +112,7 @@ userve = [
 ]
 tc = [
     "towncrier build --yes",
-    "Copy-Item -path ./CHANGELOG.md -destination ./docs -force",
+    #"Copy-Item -path ./CHANGELOG.md -destination ./docs -force",
     "git add --update",
     "git commit --message \"updated changelog\""
 ]
