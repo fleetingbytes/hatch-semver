@@ -9,7 +9,7 @@ Introduce hatch-semver as a build-dependency to your project (in your `pyproject
 ```toml
 [build-system]
 requires = [
-    "hatchling>=1.8.0",
+    "hatchling",
     "hatch-semver",
 ]
 build-backend = "hatchling.build"

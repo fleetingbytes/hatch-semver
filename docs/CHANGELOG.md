@@ -9,6 +9,7 @@
 
 - fix links in the changelog [#76](https://github.com/fleetingbytes/hatch-semver/issues/76)
 - fix links in readme [#77](https://github.com/fleetingbytes/hatch-semver/issues/77)
+- use normal hatchling in readme [#86](https://github.com/fleetingbytes/hatch-semver/issues/86)
 - doc: link to a python-semver bug [#78](https://github.com/fleetingbytes/hatch-semver/issues/78)
 
 
