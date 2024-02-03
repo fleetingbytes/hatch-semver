@@ -2,6 +2,25 @@
 
 <!-- towncrier release notes start -->
 
+## [2.0.0](https://github.com/fleetingbytes/hatch-semver/tree/2.0.0) - 2024-02-03
+
+
+### Documentation
+
+- fix links in the changelog [#76](https://github.com/fleetingbytes/hatch-semver/issues/76)
+- fix links in readme [#77](https://github.com/fleetingbytes/hatch-semver/issues/77)
+- doc: link to a python-semver bug [#78](https://github.com/fleetingbytes/hatch-semver/issues/78)
+
+
+### New Features
+
+- use python-semver 3 [#75](https://github.com/fleetingbytes/hatch-semver/issues/75)
+
+
+### Development Details
+
+- use normal hatchling in `pyproject.toml` [#79](https://github.com/fleetingbytes/hatch-semver/issues/79)
+
 ## [1.0.1](https://github.com/fleetingbytes/hatch-semver/tree/1.0.1) - 2022-11-17
 
 
