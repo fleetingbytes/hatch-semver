@@ -41,7 +41,7 @@ classifiers = [
 
 dependencies = [
     "hatchling",
-    "semver ~= 2.13.0",
+    "semver",
 ]
 
 dynamic = [
@@ -118,7 +118,7 @@ tc = [
 ]
 
 [[tool.hatch.envs.test.matrix]]
-python = ["310"]
+python = ["311"]
 
 [tool.coverage.run]
 branch = true
