@@ -107,10 +107,9 @@ draft = [
 ]
 build = [
     "towncrier build --yes",
-    "Copy-Item -path ./CHANGELOG.md -destination ./docs -force",
-    #"copy /Y ./CHANGELOG.md ./docs",
+    "cp -force ./CHANGELOG.md ./docs",
     "git add --update",
-    "git commit --message \"updated changelog\""
+    "git commit --message \"update changelog\""
 ]
 
 [tool.hatch.envs.docs]
