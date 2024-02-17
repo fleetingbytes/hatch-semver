@@ -13,4 +13,4 @@ __maintainer_email__ = __author_email__
 
 __release_date__ = date(year=2024, month=2, day=17)
 
-__version__ = "2.0.1"
+__version__ = "2.0.2"

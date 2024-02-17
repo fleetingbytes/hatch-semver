@@ -2,6 +2,13 @@
 
 <!-- towncrier release notes start -->
 
+## [2.0.2](https://github.com/fleetingbytes/hatch-semver/tree/2.0.2) - 2024-02-17
+
+
+### Bugfixes
+
+- use hatch-semver 2.0.1 as build dependency [#90](https://github.com/fleetingbytes/hatch-semver/issues/90)
+
 ## [2.0.1](https://github.com/fleetingbytes/hatch-semver/tree/2.0.1) - 2024-02-17
 
 
