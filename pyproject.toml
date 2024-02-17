@@ -1,7 +1,7 @@
 [build-system]
 requires = [
     "hatchling",
-    "hatch-semver",
+    "hatch-semver==2.0.1",
 ]
 build-backend = "hatchling.build"
 
@@ -96,12 +96,27 @@ fmt = [
     "black .",
 ]
 
+[tool.hatch.envs.tc]
+dependencies = [
+    "towncrier",
+]
+
+[tool.hatch.envs.tc.scripts]
+draft = [
+    "towncrier build --draft",
+]
+build = [
+    "towncrier build --yes",
+    "cp -force ./CHANGELOG.md ./docs",
+    "git add --update",
+    "git commit --message \"update changelog\""
+]
+
 [tool.hatch.envs.docs]
 dependencies = [
     "mkdocs",
     "mkdocs-material",
     "pdoc3",
-    "towncrier",
 ]
 
 [tool.hatch.envs.docs.scripts]
@@ -109,12 +124,6 @@ build = "pdoc --html --force --output-dir api-site hatch_semver"
 serve = "pdoc --http : hatch_semver"
 userve = [
     "mkdocs serve",
-]
-tc = [
-    "towncrier build --yes",
-    #"Copy-Item -path ./CHANGELOG.md -destination ./docs -force",
-    "git add --update",
-    "git commit --message \"updated changelog\""
 ]
 
 [[tool.hatch.envs.test.matrix]]
