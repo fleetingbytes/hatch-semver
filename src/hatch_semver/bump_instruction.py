@@ -41,7 +41,7 @@ class BumpInstruction:
     """
     version_part: str = field(init=False)
     """
-    Is either one of the 
+    Is either one of the
     [acceptable_version_parts](#hatch_semver.bump_instruction.BumpInstruction.acceptable_version_parts)
     or one of their aliases. Can also hold the value of the a specific version
     if the user wants to set it that way.

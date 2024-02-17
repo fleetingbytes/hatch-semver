@@ -2,6 +2,18 @@
 
 <!-- towncrier release notes start -->
 
+## [2.0.1](https://github.com/fleetingbytes/hatch-semver/tree/2.0.1) - 2024-02-17
+
+
+### Bugfixes
+
+- release a version not dependent on itself [#90](https://github.com/fleetingbytes/hatch-semver/issues/90)
+
+
+### Development Details
+
+- use unix newlines [#91](https://github.com/fleetingbytes/hatch-semver/issues/91)
+
 ## [2.0.0](https://github.com/fleetingbytes/hatch-semver/tree/2.0.0) - 2024-02-03
 
 
