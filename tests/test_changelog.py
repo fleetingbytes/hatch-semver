@@ -11,11 +11,14 @@ import hatch_semver.__about__ as about
 
 @pytest.fixture
 def changelog_files():
-    with open(
-        Path(__file__).parent.parent.absolute() / "CHANGELOG.md", encoding="utf-8"
-    ) as root_changelog, open(
-        Path(__file__).parent.parent.absolute() / "docs" / "CHANGELOG.md", encoding="utf-8"
-    ) as docs_changelog:
+    with (
+        open(
+            Path(__file__).parent.parent.absolute() / "CHANGELOG.md", encoding="utf-8"
+        ) as root_changelog,
+        open(
+            Path(__file__).parent.parent.absolute() / "docs" / "CHANGELOG.md", encoding="utf-8"
+        ) as docs_changelog,
+    ):
         yield root_changelog, docs_changelog
 
 
