@@ -1,0 +1,1285 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Sven Siegmund">
+      
+      
+        <link rel="canonical" href="https://nagidal.github.io/hatch-semver/user_guide/1-commands/">
+      
+      
+        <link rel="prev" href="../../CHANGELOG/">
+      
+      
+        <link rel="next" href="../2-migrating-to-semver/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.9">
+    
+    
+      
+        <title>Commands - Hatch Semver</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.f2e4d321.min.css">
+      
+      
+  
+  
+    
+    
+  
+  
+  <style>:root{--md-admonition-icon--warning:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 17.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0Zm-.25-8.25a.75.75 0 0 0-1.5 0v4.5a.75.75 0 0 0 1.5 0v-4.5Z"/><path d="M9.836 3.244c.963-1.665 3.365-1.665 4.328 0l8.967 15.504c.963 1.667-.24 3.752-2.165 3.752H3.034c-1.926 0-3.128-2.085-2.165-3.752Zm3.03.751a1.002 1.002 0 0 0-1.732 0L2.168 19.499A1.002 1.002 0 0 0 3.034 21h17.932a1.002 1.002 0 0 0 .866-1.5L12.866 3.994Z"/></svg>');}</style>
+
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#commands" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Hatch Semver" class="md-header__button md-logo" aria-label="Hatch Semver" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Hatch Semver
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Commands
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Nagidal/hatch-semver" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Hatch Semver" class="md-nav__button md-logo" aria-label="Hatch Semver" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Hatch Semver
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Nagidal/hatch-semver" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CHANGELOG/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Changelog
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    User Guide
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            User Guide
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Commands
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Commands
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#no-command-at-all" class="md-nav__link">
+    <span class="md-ellipsis">
+      No Command At All
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#specific-version" class="md-nav__link">
+    <span class="md-ellipsis">
+      Specific Version
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#major-minor-patch" class="md-nav__link">
+    <span class="md-ellipsis">
+      Major, Minor, Patch
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pre-release" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pre-Release
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Pre-Release">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#chained-with-a-version-core-bump" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chained With a Version Core Bump
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alphanumeric-pre-release-identifiers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Alphanumeric Pre-Release Identifiers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#custom-identifiers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Custom Identifiers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alpha-beta-shortcuts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Alpha, Beta Shortcuts
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#release" class="md-nav__link">
+    <span class="md-ellipsis">
+      Release
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#build" class="md-nav__link">
+    <span class="md-ellipsis">
+      Build
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Build">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#development-build-shortcut" class="md-nav__link">
+    <span class="md-ellipsis">
+      Development Build Shortcut
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alphanumeric-build-identifiers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Alphanumeric Build Identifiers
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chained-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chained Commands
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2-migrating-to-semver/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Migrating To Semver
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#no-command-at-all" class="md-nav__link">
+    <span class="md-ellipsis">
+      No Command At All
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#specific-version" class="md-nav__link">
+    <span class="md-ellipsis">
+      Specific Version
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#major-minor-patch" class="md-nav__link">
+    <span class="md-ellipsis">
+      Major, Minor, Patch
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pre-release" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pre-Release
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Pre-Release">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#chained-with-a-version-core-bump" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chained With a Version Core Bump
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alphanumeric-pre-release-identifiers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Alphanumeric Pre-Release Identifiers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#custom-identifiers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Custom Identifiers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alpha-beta-shortcuts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Alpha, Beta Shortcuts
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#release" class="md-nav__link">
+    <span class="md-ellipsis">
+      Release
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#build" class="md-nav__link">
+    <span class="md-ellipsis">
+      Build
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Build">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#development-build-shortcut" class="md-nav__link">
+    <span class="md-ellipsis">
+      Development Build Shortcut
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alphanumeric-build-identifiers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Alphanumeric Build Identifiers
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chained-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chained Commands
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="commands">Commands</h1>
+<p>A hatch-semver command is written as a single string of comma-separated bump instructions as the single positional argument of the <code>hatch version</code> subcommand, i.e <code>hatch version &lt;COMMAND&gt;</code>.</p>
+<h2 id="no-command-at-all">No Command At All</h2>
+<p>If no command is given, <code>hatch version</code> will simply return the current version of the project.</p>
+<h2 id="specific-version">Specific Version</h2>
+<p>You can set a specific version directly, as long as it is a <a href="https://regex101.com/r/Ly7O1x/3/">semantic version</a>. If <a href="https://hatch.pypa.io/latest/plugins/version-scheme/standard/#options">bump validation</a> is used, the resulting version must also be higher, or—if only the build identifier changes—at least equal in precedence.</p>
+<table>
+<thead>
+<tr>
+<th>Old Version</th>
+<th>Command</th>
+<th>validate-bump</th>
+<th>New Version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>2.3.4</code></td>
+<td><code>13.5.26</code></td>
+<td>True</td>
+<td><code>13.5.26</code></td>
+</tr>
+<tr>
+<td><code>2.3.4</code></td>
+<td><code>2.3.3</code></td>
+<td>True</td>
+<td>ValidationError</td>
+</tr>
+<tr>
+<td><code>2.3.4</code></td>
+<td><code>2.3.3</code></td>
+<td>False</td>
+<td><code>2.3.3</code></td>
+</tr>
+<tr>
+<td><code>2.3.4</code></td>
+<td><code>2.3.4-alpha</code></td>
+<td>True</td>
+<td>ValidationError</td>
+</tr>
+<tr>
+<td><code>2.3.4</code></td>
+<td><code>2.3.4-alpha</code></td>
+<td>False</td>
+<td><code>2.3.4-alpha</code></td>
+</tr>
+<tr>
+<td><code>2.3.4-alpha</code></td>
+<td><code>2.3.4</code></td>
+<td>True</td>
+<td><code>2.3.4</code></td>
+</tr>
+<tr>
+<td><code>3.0.0-beta.2</code></td>
+<td><code>3.0.0-almost-done.3</code></td>
+<td>True</td>
+<td>ValidationError</td>
+</tr>
+<tr>
+<td><code>3.0.0-beta.2</code></td>
+<td><code>3.0.0-rc.1</code></td>
+<td>True</td>
+<td><code>3.0.0-rc.1</code></td>
+</tr>
+<tr>
+<td><code>4.3.2-rc.2+zoom</code></td>
+<td><code>4.3.2-rc.2+dev</code></td>
+<td>True</td>
+<td><code>4.3.2-rc.2+dev</code></td>
+</tr>
+</tbody>
+</table>
+<p>Keep in mind that all pre-releases are ranked by their ASCII sort order and all of them are lower in precedence than the associated normal version, hence the validation errors.
+Build versions have all the same precedence, hence no validation error.</p>
+<h2 id="major-minor-patch">Major, Minor, Patch</h2>
+<table>
+<thead>
+<tr>
+<th>Old Version</th>
+<th>Command</th>
+<th>New Version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>0.1.0</code></td>
+<td><code>patch</code><br><code>fix</code><br><code>micro</code></td>
+<td><code>0.1.1</code></td>
+</tr>
+<tr>
+<td><code>0.1.1</code></td>
+<td><code>minor</code></td>
+<td><code>0.2.0</code></td>
+</tr>
+<tr>
+<td><code>1.0.0</code></td>
+<td><code>major</code></td>
+<td><code>1.0.0</code></td>
+</tr>
+</tbody>
+</table>
+<p>These commands bump the <a href="https://semver.org/#backusnaur-form-grammar-for-valid-semver-versions">version core</a>. <code>fix</code> and <code>micro</code> are aliases of <code>patch</code>.</p>
+<p><a href="#pre-release">Pre-release</a> and <a href="#build">build</a> commands allow specifying their value with <code>=</code>.
+This, however, is not possible for the version core bump commands. 
+To accomplish bigger version bumps, they can be <a href="#chained-commands">chained</a> <a href="#chained-with-a-version-core-bump">together</a> or replaced by a <a href="#specific-version">specific version</a>.</p>
+<table>
+<thead>
+<tr>
+<th>Old Version</th>
+<th>Command</th>
+<th>New Version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>0.1.0</code></td>
+<td><code>major=7,minor=27</code></td>
+<td>ValueError</td>
+</tr>
+<tr>
+<td><code>0.1.0</code></td>
+<td><code>7.27.6</code></td>
+<td><code>7.27.6</code></td>
+</tr>
+<tr>
+<td><code>0.1.0</code></td>
+<td><code>fix,fix,fix,fix</code></td>
+<td><code>0.1.4</code></td>
+</tr>
+<tr>
+<td><code>0.1.0</code></td>
+<td><code>major,major,minor</code></td>
+<td><code>2.1.0</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="pre-release">Pre-Release</h2>
+<p>If applied on a version without <a href="https://semver.org/#backusnaur-form-grammar-for-valid-semver-versions">pre-release identifiers</a>, <code>prerelease</code>—or its aliases <code>rc</code>, <code>pre</code>, <code>pre-release</code>—<strong>will bump the patch version</strong> and introduce the default pre-release identifiers <em>rc</em> and <em>1</em>.
+If some pre-release identifiers are already present and the last one is a number, it will be bumped. Naturally, this drops any present build identifiers.</p>
+<table>
+<thead>
+<tr>
+<th>Old Version</th>
+<th>Command</th>
+<th>New Version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>0.9.5</code></td>
+<td><code>prerelease</code><br><code>rc</code><br><code>pre</code><br><code>pre-release</code></td>
+<td><code>0.9.6-rc.1</code></td>
+</tr>
+<tr>
+<td><code>0.9.5-rc.1</code></td>
+<td><code>pre</code></td>
+<td><code>0.9.5-rc.2</code></td>
+</tr>
+<tr>
+<td><code>0.9.5-rc.2+debug</code></td>
+<td><code>rc</code></td>
+<td><code>0.9.5-rc.3</code></td>
+</tr>
+<tr>
+<td><code>0.9.5+dev.3</code></td>
+<td><code>rc</code></td>
+<td><code>0.9.6-rc.1</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="chained-with-a-version-core-bump">Chained With a Version Core Bump</h3>
+<p>You can <a href="#chained-commands">chain</a> multiple commands together. 
+If the <a href="https://semver.org/#backusnaur-form-grammar-for-valid-semver-versions">version core</a> is bumped before the pre-release bump, the pre-release bump <strong>will not bump the patch version</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Old Version</th>
+<th>Command</th>
+<th>New Version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>0.8.6</code></td>
+<td><code>rc</code></td>
+<td><code>0.8.7-rc.1</code></td>
+</tr>
+<tr>
+<td><code>0.8.6</code></td>
+<td><code>patch,rc</code></td>
+<td><code>0.8.7-rc.1</code></td>
+</tr>
+<tr>
+<td><code>0.8.6</code></td>
+<td><code>minor,rc</code></td>
+<td><code>0.9.0-rc.1</code></td>
+</tr>
+<tr>
+<td><code>0.8.6</code></td>
+<td><code>major,rc</code></td>
+<td><code>1.0.0-rc.1</code></td>
+</tr>
+<tr>
+<td><code>0.8.6</code></td>
+<td><code>1.3.5,rc,rc</code></td>
+<td><code>1.3.5-rc.2</code></td>
+</tr>
+<tr>
+<td><code>0.8.6</code></td>
+<td><code>major,rc,build</code></td>
+<td><code>1.0.0-rc.1+build.1</code></td>
+</tr>
+<tr>
+<td><code>0.8.6</code></td>
+<td><code>major,build,rc</code></td>
+<td><code>1.0.0-rc.1</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="alphanumeric-pre-release-identifiers">Alphanumeric Pre-Release Identifiers</h3>
+<p>If pre-release identifiers are present but the last one is an <a href="https://semver.org/#backusnaur-form-grammar-for-valid-semver-versions">alphanumeric identifier</a>—i.e. not a number—it <strong>will not be bumped</strong> and no further identifiers are introduced (current <a href="https://github.com/python-semver/python-semver">python-semver</a> behavior<sup><a href="https://github.com/python-semver/python-semver/issues/369">issue</a></sup>). 
+This will normally result in a <code>ValidationError</code>, unless you have turned off <a href="https://hatch.pypa.io/latest/plugins/version-scheme/standard/#options">validate-bump</a> in your hatch version settings.</p>
+<table>
+<thead>
+<tr>
+<th>Old Version</th>
+<th>Command</th>
+<th>validate-bump</th>
+<th>New Version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>0.9.7-rc1</code></td>
+<td><code>prerelease</code></td>
+<td>True</td>
+<td>ValidationError</td>
+</tr>
+<tr>
+<td><code>0.9.7-rc1</code></td>
+<td><code>prerelease</code></td>
+<td>False</td>
+<td><code>0.9.7-rc1</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="custom-identifiers">Custom Identifiers</h3>
+<p>You can define your own pre-release identifier like this: <code>prerelease=&lt;identifier&gt;</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Old Version</th>
+<th>Command</th>
+<th>New Version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>0.3.3</code></td>
+<td><code>pre=alpha</code></td>
+<td><code>0.3.4-alpha.1</code></td>
+</tr>
+<tr>
+<td><code>0.3.4-alpha.1</code></td>
+<td><code>pre</code></td>
+<td><code>0.3.4-alpha.2</code></td>
+</tr>
+<tr>
+<td><code>0.3.4-alpha.2</code></td>
+<td><code>pre=beta</code></td>
+<td><code>0.3.4-alpha.3</code> <sup><a href="https://github.com/python-semver/python-semver/issues/339">bug</a></sup></td>
+</tr>
+</tbody>
+</table>
+<p>Unfortunately, once a pre-release identifier has been introduced, it cannot be changed later. This is a current <a href="https://github.com/python-semver/python-semver/issues/339">python-semver bug</a>.
+For now you can work around it by using a <a href="#specific-version">specific version</a> command. 
+Bumping the version core will effectively  also drop the identifier, so then another identifier can be introduced again.</p>
+<h3 id="alpha-beta-shortcuts">Alpha, Beta Shortcuts</h3>
+<p><code>alpha</code> and <code>beta</code> are very common pre-release identifiers.
+Hatch-semver provides the <code>alpha</code> and <code>beta</code> shortcuts for <code>prerelease=alpha</code> and <code>prerelease=beta</code>, respectively.</p>
+<table>
+<thead>
+<tr>
+<th>Old Version</th>
+<th>Command</th>
+<th>New Version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>5.12.3</code></td>
+<td><code>alpha</code></td>
+<td><code>5.12.4-alpha.1</code></td>
+</tr>
+<tr>
+<td><code>5.12.3</code></td>
+<td><code>beta</code></td>
+<td><code>5.12.4-beta.1</code></td>
+</tr>
+</tbody>
+</table>
+<p><code>alpha</code> and <code>beta</code> themselves are not <em>aliases</em> of <code>prerelease</code>.
+You cannot use them to define a custom identifier.
+<code>rc</code>, however, <em>is</em> a true alias and allows this.</p>
+<table>
+<thead>
+<tr>
+<th>Old Version</th>
+<th>Command</th>
+<th>New Version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>5.12.3</code></td>
+<td><code>alpha=ALPHA</code></td>
+<td>ValueError</td>
+</tr>
+<tr>
+<td><code>5.12.3</code></td>
+<td><code>rc=RC</code></td>
+<td><code>5.12.4-RC.1</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="release">Release</h2>
+<p>The <code>release</code> command turns a pre-release version into a final release.
+If applied on a bare <a href="https://semver.org/#backusnaur-form-grammar-for-valid-semver-versions">version core</a>, it will result in a ValidationError because the resulting version is not higher than the old one. Bump validation can be <a href="https://hatch.pypa.io/latest/plugins/version-scheme/standard/#options">turned off</a>.</p>
+<table>
+<thead>
+<tr>
+<th>Old Version</th>
+<th>Command</th>
+<th>validate-bump</th>
+<th>New Version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>1.0.0-rc4+build.23</code></td>
+<td><code>release</code></td>
+<td>True</td>
+<td><code>1.0.0</code></td>
+</tr>
+<tr>
+<td><code>1.0.0</code></td>
+<td><code>release</code></td>
+<td>True</td>
+<td>ValidationError</td>
+</tr>
+<tr>
+<td><code>1.0.0</code></td>
+<td><code>release</code></td>
+<td>False</td>
+<td><code>1.0.0</code></td>
+</tr>
+</tbody>
+</table>
+<p>You can meaningfully use release chained with another commands, although the alternatives are perhaps more intuitive:</p>
+<table>
+<thead>
+<tr>
+<th>Old Version</th>
+<th>Command</th>
+<th>New Version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>7.1.8-rc.1</code></td>
+<td><code>release,beta</code></td>
+<td><code>7.1.9-beta.1</code></td>
+</tr>
+<tr>
+<td><code>7.1.8-rc.1</code></td>
+<td><code>patch,beta</code></td>
+<td><code>7.1.9-beta.1</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="build">Build</h2>
+<p>The <code>build</code> command introduces the default build identifiers <em>build</em> and <em>1</em>. 
+If some build identifiers are already present, and the last one <em>is a number</em>, it will be bumped.</p>
+<p>Similar to the <a href="#pre-release">pre-release</a> command, you can specify you own custom build idetifier after <code>=</code>. 
+Same as with pre-releases, this is prone to a <a href="https://github.com/python-semver/python-semver/issues/339">bug in python-semver</a>.</p>
+<table>
+<thead>
+<tr>
+<th>Old Version</th>
+<th>Command</th>
+<th>New Version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>4.8.5-rc.2</code></td>
+<td><code>build</code></td>
+<td><code>4.8.5-rc.2+build.1</code></td>
+</tr>
+<tr>
+<td><code>4.8.5-rc.2+build.1</code></td>
+<td><code>build</code></td>
+<td><code>4.8.5-rc.2+build.2</code></td>
+</tr>
+<tr>
+<td><code>1.0.0</code></td>
+<td><code>build=fix-docs</code></td>
+<td><code>1.0.0+fix-docs.1</code></td>
+</tr>
+<tr>
+<td><code>1.0.0+fix-docs.1</code></td>
+<td><code>build</code></td>
+<td><code>1.0.0+fix-docs.2</code></td>
+</tr>
+<tr>
+<td><code>1.0.0+fix-docs.2</code></td>
+<td><code>build=docs-fixed</code></td>
+<td><code>1.0.0+fix-docs.3</code> <sup><a href="https://github.com/python-semver/python-semver/issues/339">bug</a></sup></td>
+</tr>
+</tbody>
+</table>
+<p>Build versions are all of the same precedence, so technically, a version bump does not occur.
+Normally, <a href="https://hatch.pypa.io/latest/plugins/version-scheme/standard/#options">bump-validation</a> checks whether the resulting version is higher than the old one. 
+However, if all that changes is the build identifier, a version of equal precedence is sufficient to pass the validation. </p>
+<table>
+<thead>
+<tr>
+<th>Old Version</th>
+<th>Command</th>
+<th>validate-bump</th>
+<th>New Version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>4.8.5-rc.2</code></td>
+<td><code>build=tracing</code></td>
+<td>True</td>
+<td><code>4.8.5-rc.2+tracing.1</code></td>
+</tr>
+<tr>
+<td><code>4.8.5-rc.2+tracing.2</code></td>
+<td><code>4.8.5-rc.2+debug</code></td>
+<td>True</td>
+<td><code>4.8.5-rc.2+debug</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="development-build-shortcut">Development Build Shortcut</h3>
+<p>Sometimes people release what they call development builds, or <em>dev builds</em>.
+A convenient shortcut for <code>build=dev</code> is <code>dev</code>.
+Similar to the <a href="#alpha-beta-shortcuts">alpha and beta</a> shortcuts, <code>dev</code> is not an alias, so don't try to specify a custom build identifier with it.</p>
+<table>
+<thead>
+<tr>
+<th>Old Version</th>
+<th>Command</th>
+<th>New Version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>2.9.3</code></td>
+<td><code>build=dev</code></td>
+<td><code>2.9.3+dev.1</code></td>
+</tr>
+<tr>
+<td><code>2.9.3</code></td>
+<td><code>dev</code></td>
+<td><code>2.9.3+dev.1</code></td>
+</tr>
+<tr>
+<td><code>2.9.3</code></td>
+<td><code>dev=develop</code></td>
+<td>ValueError</td>
+</tr>
+</tbody>
+</table>
+<h3 id="alphanumeric-build-identifiers">Alphanumeric Build Identifiers</h3>
+<p>Similar to <a href="https://github.com/python-semver/python-semver">python-semver's</a> inability to bump alphanumeric pre-release identifiers, alphanumeric build identifiers will also not be bumped <sup><a href="https://github.com/python-semver/python-semver/issues/369">issue</a></sup>.
+The returned result is the exact same version.
+A ValidationError is not raised because when bumping or changing build identifiers, equal precedece of the old and new version is sufficient.</p>
+<table>
+<thead>
+<tr>
+<th>Old Version</th>
+<th>Command</th>
+<th>validate-bump</th>
+<th>New Version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>6.3.4-rc.2+verbose</code></td>
+<td><code>build</code></td>
+<td>True</td>
+<td><code>6.3.4-rc.2+verbose</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="chained-commands">Chained Commands</h2>
+<p>You can chain commands together by comma like this: <code>&lt;command1&gt;,&lt;command2&gt;,&lt;command3&gt;...</code>. 
+They are executed one by one in the specified sequence. Some straight-forward and most common examples of chained commands are presented in the <a href="#chained-with-a-version-core-bump">pre-release</a> section.</p>
+<p>The bump validation check is performed only after the last command is executed. 
+It is therefore OK to temporarily violate the version precedence rule for the intermediate versions as long as the last resulting version passes the validation against the old version.</p>
+<table>
+<thead>
+<tr>
+<th>Old Version</th>
+<th>Command</th>
+<th>validate-bump</th>
+<th>New Version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>8.0.4</code></td>
+<td><code>major,8.0.5</code></td>
+<td>True</td>
+<td><code>8.0.5</code></td>
+</tr>
+<tr>
+<td><code>8.0.4</code></td>
+<td><code>8.0.3,patch,build</code></td>
+<td>True</td>
+<td><code>8.0.4+build.1</code></td>
+</tr>
+<tr>
+<td><code>8.0.4+build.1</code></td>
+<td><code>8.0.3,patch,build</code></td>
+<td>True</td>
+<td><code>8.0.4+build.1</code></td>
+</tr>
+<tr>
+<td><code>8.0.4-alpha.1</code></td>
+<td><code>8.0.4,alpha,pre</code></td>
+<td>True</td>
+<td><code>8.0.4-alpha.2</code></td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.8fd75fb4.min.js"></script>
+      
+    
+  </body>
+</html>
