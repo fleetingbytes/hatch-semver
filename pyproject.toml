@@ -104,8 +104,6 @@ dependencies = [
 [tool.hatch.envs.tc.scripts]
 draft = [
     "towncrier build --draft",
-    "git add --update",
-    "git commit --message \"updated changelog\""
 ]
 build = [
     "towncrier build --yes",
