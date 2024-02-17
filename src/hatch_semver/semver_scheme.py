@@ -9,7 +9,7 @@ from operator import ge, gt
 from typing import Mapping
 
 from hatchling.version.scheme.plugin.interface import VersionSchemeInterface
-from semver import VersionInfo
+from semver import Version
 
 from .bump_instruction import BumpInstruction
 from .errors import ValidationError
@@ -60,7 +60,7 @@ class SemverScheme(VersionSchemeInterface):
         """
         if not desired_version:
             return original_version
-        original_version = VersionInfo.parse(original_version)
+        original_version = Version.parse(original_version)
         current_version = deepcopy(original_version)
         instructions: str = desired_version
         validate = self.config.get("validate-bump", True)
@@ -82,7 +82,7 @@ class SemverScheme(VersionSchemeInterface):
                 # To avoid this, we check if nothing but the metadata changed.
                 # if so, we will pretend that last_bump_was_build
                 temp_old_version = deepcopy(current_version)
-                current_version = VersionInfo.parse(bi.version_part)
+                current_version = Version.parse(bi.version_part)
                 if temp_old_version == current_version:
                     last_bump_was_build = True
                 rc_bumps_patch = False
@@ -100,7 +100,7 @@ class SemverScheme(VersionSchemeInterface):
         return str(current_version)
 
     def validate_bump(
-        self, current_version: VersionInfo, original_version: VersionInfo, bumped_build: bool
+        self, current_version: Version, original_version: Version, bumped_build: bool
     ) -> None:
         """
         Validates if the current version is a valid successor of the original version.
